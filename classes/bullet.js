@@ -1,4 +1,3 @@
-import towerStats from './towerStats.js'
 import { distanceToTarget, angleToTarget } from './utils.js'
 
 export class bullet {
@@ -19,10 +18,8 @@ export class bullet {
     travel() {
         if (!this.target || !this.alive) return
         if (distanceToTarget(this.left, this.top, this.target.left, this.target.top) < 10) {
-            towerStats.closestDistance = 10000
+            this.target.dealDamage(1)
             this.alive = false
-            // towerStats.closest = undefined
-            towerStats.closest.dealDamage(1)
             this.div.remove()
             return
         }

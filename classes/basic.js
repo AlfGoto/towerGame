@@ -70,6 +70,11 @@ export default class basic {
     dealDamage(arg) {
         this.pv = this.pv - arg
         this.setPos()
-        if (this.pv < 1) { this.div.remove() }
+        if (this.pv < 1) {
+            if (this == towerStats.closest) towerStats.closestDistance = 10000
+            this.div.remove()
+        }
     }
 }
+
+//towerStats.closestDistance = 10000
