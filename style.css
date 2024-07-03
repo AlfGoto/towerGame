@@ -23,6 +23,10 @@ body {
         height: var(--sizeTower);
         background-color: wheat;
         transform: translateX(-50%) translateY(-50%);
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 
     .ennemy {

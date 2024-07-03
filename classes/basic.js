@@ -1,4 +1,5 @@
 import { randomBetweenTwoInt, distanceToPlayer, angleToPlayer } from "./utils.js"
+import towerStats from './towerStats.js'
 
 export default class basic {
     constructor(pv = 10, atk = 1, speed = 10, size = 25, toStopWalking = 0, shooter = false) {
@@ -47,6 +48,9 @@ export default class basic {
 
 
             setTimeout(() => { this.move(angle) }, this.speed)
+        }else{
+            this.div.remove()
+            towerStats.hp--
         }
     }
     setPos() {
