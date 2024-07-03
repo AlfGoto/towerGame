@@ -1,25 +1,37 @@
-:root{
-    --sizeTower : 50px;
+:root {
+    --sizeTower: 50px;
+    --basicSize: 25px;
 }
 
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     font-family: sans-serif;
 }
 
-body{
+body {
+    position: relative;
     width: 100svw;
     height: 100svh;
+    overflow: hidden;
 
 
-    #tower{
+    #tower {
         position: absolute;
         width: var(--sizeTower);
         height: var(--sizeTower);
         background-color: wheat;
-        padding-left: -50%;
         transform: translateX(-50%) translateY(-50%);
+    }
+
+    .ennemy {
+        position: absolute;
+        transform: translateX(-50%) translateY(-50%);
+        background-color: rgb(255, 105, 105);
+    }
+    .basic{
+        width: var(--basicSize);
+        height: var(--basicSize)
     }
 }
