@@ -40,6 +40,7 @@ export default class basic {
         this.move(angleToPlayer(this.left, this.top))
     }
     move(angle) {
+        if(!towerStats.gameOn) return
         if (distanceToPlayer(this.left, this.top) > this.toStopWalking) {
             this.left = this.left + (angle.left / 100)
             this.top = this.top + (angle.top / 100)
@@ -50,7 +51,7 @@ export default class basic {
             setTimeout(() => { this.move(angle) }, this.speed)
         }else{
             this.div.remove()
-            towerStats.hp--
+            towerStats.dealDamage(1)
         }
     }
     setPos() {
