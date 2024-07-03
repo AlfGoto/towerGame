@@ -1,5 +1,4 @@
 import towerStats from './towerStats.js'
-import { angleToTarget } from './utils.js'
 import { bullet } from './bullet.js'
 
 export default class tower {
@@ -35,9 +34,9 @@ export default class tower {
         this.hpP.innerHTML = this.hp
     }
     setTarget() {
-        // console.log(towerStats.closest)
         if (towerStats.gameOn) setTimeout(() => {
-            this.bullets.push(new bullet(angleToTarget(towerStats.closest.left, towerStats.closest.top)))
+            console.log(towerStats.closest)
+            if (towerStats.closest) this.bullets.push(new bullet(towerStats.closest))
             this.setTarget()
         }, 2000 / towerStats.shootingSpeed)
     }

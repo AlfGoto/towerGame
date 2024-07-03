@@ -1,8 +1,10 @@
 import towerStats from './towerStats.js'
+import { distanceToTarget, angleToTarget } from './utils.js'
 
 export class bullet {
-    constructor(angle) {
-        this.angle = angle
+    constructor(target) {
+        this.target = target
+        this.angle = angleToTarget(this.target.left, this.target.top)
         this.div = document.createElement('div')
         this.div.classList.add('bullet')
         document.body.appendChild(this.div)
@@ -15,13 +17,20 @@ export class bullet {
         setTimeout(() => { this.div.remove(); this.alive = false }, 10000)
     }
     travel() {
+        if (!this.target || !this.alive) return
+        if (distanceToTarget(this.left, this.top, this.target.left, this.target.top) < 10) {
+            towerStats.closestDistance = 10000
+            this.alive = false
+            // towerStats.closest = undefined
+            towerStats.closest.dealDamage(1)
+            this.div.remove()
+            return
+        }
         setTimeout(() => {
-            if (this.alive) {
-                this.left = this.left + (this.angle.left / 10)
-                this.top = this.top + (this.angle.top / 10)
-                this.setPos()
-                this.travel()
-            }
+            this.left = this.left + (this.angle.left / 10)
+            this.top = this.top + (this.angle.top / 10)
+            this.setPos()
+            this.travel()
         }, 25)
     }
     setPos() {

@@ -2,7 +2,7 @@ import { randomBetweenTwoInt, distanceToPlayer, angleToPlayer } from "./utils.js
 import towerStats from './towerStats.js'
 
 export default class basic {
-    constructor(pv = 10, atk = 1, speed = 10, size = 25, toStopWalking = 0, shooter = false) {
+    constructor(pv = 1, atk = 1, speed = 10, size = 25, toStopWalking = 0, shooter = false) {
         this.pv = pv
         this.maxPv = pv
         this.speed = 100 / speed
@@ -40,7 +40,8 @@ export default class basic {
         this.move(angleToPlayer(this.left, this.top))
     }
     move(angle) {
-        if(!towerStats.gameOn) return
+        if (!towerStats.gameOn) { return }
+        if (this.pv <= 0) { return }
         let distance = distanceToPlayer(this.left, this.top)
         if (distanceToPlayer(this.left, this.top) > this.toStopWalking) {
             this.left = this.left + (angle.left / 100)
@@ -48,21 +49,27 @@ export default class basic {
             this.setPos()
             // console.log(this.div)
 
-            if(distance < towerStats.closestDistance){
+            if (!towerStats.closest || distance < towerStats.closestDistance) {
                 towerStats.closest = this
                 towerStats.closestDistance = distance
             }
 
 
             setTimeout(() => { this.move(angle) }, this.speed)
-        }else{
+        } else {
             this.div.remove()
             towerStats.dealDamage(1)
-            if(towerStats.closest == this)towerStats.closestDistance = 1000
+            if (towerStats.closest == this) towerStats.closestDistance = 1000
         }
     }
     setPos() {
         this.div.style.left = this.left + 'px'
         this.div.style.top = this.top + 'px'
+        this.div.innerHTML = this.pv
+    }
+    dealDamage(arg) {
+        this.pv = this.pv - arg
+        this.setPos()
+        if (this.pv < 1) { this.div.remove() }
     }
 }
