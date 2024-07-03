@@ -41,17 +41,24 @@ export default class basic {
     }
     move(angle) {
         if(!towerStats.gameOn) return
+        let distance = distanceToPlayer(this.left, this.top)
         if (distanceToPlayer(this.left, this.top) > this.toStopWalking) {
             this.left = this.left + (angle.left / 100)
             this.top = this.top + (angle.top / 100)
             this.setPos()
-            console.log(this.div)
+            // console.log(this.div)
+
+            if(distance < towerStats.closestDistance){
+                towerStats.closest = this
+                towerStats.closestDistance = distance
+            }
 
 
             setTimeout(() => { this.move(angle) }, this.speed)
         }else{
             this.div.remove()
             towerStats.dealDamage(1)
+            if(towerStats.closest == this)towerStats.closestDistance = 1000
         }
     }
     setPos() {

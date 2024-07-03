@@ -1,4 +1,6 @@
 import towerStats from './towerStats.js'
+import { angleToTarget } from './utils.js'
+import { bullet } from './bullet.js'
 
 export default class tower {
     constructor() {
@@ -18,14 +20,25 @@ export default class tower {
         this.size = 75
         document.documentElement.style.setProperty('--sizeTower', this.size + 'px');
 
+        this.bullets = []
+
         this.init()
     }
     init() {
         console.log('Tower is up')
         setInterval(() => { this.updateHp() }, 100)
+
+        this.setTarget()
     }
     updateHp() {
         this.hp = towerStats.hp
         this.hpP.innerHTML = this.hp
+    }
+    setTarget() {
+        // console.log(towerStats.closest)
+        if (towerStats.gameOn) setTimeout(() => {
+            this.bullets.push(new bullet(angleToTarget(towerStats.closest.left, towerStats.closest.top)))
+            this.setTarget()
+        }, 2000 / towerStats.shootingSpeed)
     }
 }
