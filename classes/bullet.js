@@ -1,9 +1,11 @@
-import { distanceToTarget, angleToTarget } from './utils.js'
+import { distanceToTarget } from './utils.js'
+import towerStats from './towerStats.js'
 
 export class bullet {
-    constructor(target) {
-        this.target = target
-        this.angle = angleToTarget(this.target.left, this.target.top)
+    constructor(angle) {
+        this.angle = angle
+        // this.target = target
+        // this.angle = angleToTarget(this.target.left, this.target.top)
         this.div = document.createElement('div')
         this.div.classList.add('bullet')
         document.body.appendChild(this.div)
@@ -13,22 +15,24 @@ export class bullet {
 
         this.alive = true
         this.travel()
-        setTimeout(() => { this.div.remove(); this.alive = false }, 10000)
+        setTimeout(() => { this.div.remove(); this.alive = false }, 3000)
     }
     travel() {
-        if (!this.target || !this.alive) return
-        if (distanceToTarget(this.left, this.top, this.target.left, this.target.top) < 10) {
-            this.target.dealDamage(1)
-            this.alive = false
-            this.div.remove()
-            return
+        if ( !this.alive) return
+        for(const foe of towerStats.enemies){
+            if (distanceToTarget(this.left, this.top, foe.left, foe.top) < 20) {
+                foe.dealDamage(1)
+                this.alive = false
+                this.div.remove()
+                return
+            }
         }
         setTimeout(() => {
-            this.left = this.left + (this.angle.left / 10)
-            this.top = this.top + (this.angle.top / 10)
+            this.left = this.left + (this.angle.left / 5)
+            this.top = this.top + (this.angle.top / 5)
             this.setPos()
             this.travel()
-        }, 25)
+        }, 20)
     }
     setPos() {
         this.div.style.left = this.left + 'px'

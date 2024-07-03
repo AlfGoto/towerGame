@@ -13,4 +13,5 @@ export default {
     },
     closest: undefined,
     closestDistance: 100000,
+    enemies: [],
 }

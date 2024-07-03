@@ -1,5 +1,6 @@
 import towerStats from './towerStats.js'
 import { bullet } from './bullet.js'
+import { angleToTarget } from './utils.js'
 
 export default class tower {
     constructor() {
@@ -35,8 +36,7 @@ export default class tower {
     }
     setTarget() {
         if (towerStats.gameOn) setTimeout(() => {
-            console.log(towerStats.closest)
-            if (towerStats.closest) this.bullets.push(new bullet(towerStats.closest))
+            if (towerStats.closest) this.bullets.push(new bullet(angleToTarget(towerStats.closest.left, towerStats.closest.top)))
             this.setTarget()
         }, 2000 / towerStats.shootingSpeed)
     }

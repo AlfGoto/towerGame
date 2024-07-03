@@ -4,6 +4,9 @@ import towerStats from './classes/towerStats.js'
 
 
 let Tower = new TowerBuilder()
+let maxEnnemy = 20
 
-let e = new basic()
-setInterval(() => { let e = new basic() }, 1000)
+towerStats.enemies.push(new basic())
+setInterval(() => { if (Array.from(document.getElementsByClassName('ennemy')).length < maxEnnemy) { towerStats.enemies.push(new basic()) } }, 1000)
+
+// setInterval(() => { console.log(towerStats.enemies) }, 1000)

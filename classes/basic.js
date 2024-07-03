@@ -47,7 +47,6 @@ export default class basic {
             this.left = this.left + (angle.left / 100)
             this.top = this.top + (angle.top / 100)
             this.setPos()
-            // console.log(this.div)
 
             if (!towerStats.closest || distance < towerStats.closestDistance) {
                 towerStats.closest = this
@@ -58,6 +57,7 @@ export default class basic {
             setTimeout(() => { this.move(angle) }, this.speed)
         } else {
             this.div.remove()
+            towerStats.enemies.splice(towerStats.enemies.indexOf(this), 1)
             towerStats.dealDamage(1)
             if (towerStats.closest == this) towerStats.closestDistance = 1000
         }
@@ -71,6 +71,7 @@ export default class basic {
         this.pv = this.pv - arg
         this.setPos()
         if (this.pv < 1) {
+            towerStats.enemies.splice(towerStats.enemies.indexOf(this), 1)
             if (this == towerStats.closest) towerStats.closestDistance = 10000
             this.div.remove()
         }
