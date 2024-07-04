@@ -4,8 +4,6 @@ import { angleToTarget } from './utils.js'
 
 export default class tower {
     constructor() {
-
-
         this.div = document.createElement('div')
         document.body.appendChild(this.div)
         this.div.id = 'tower'
@@ -14,8 +12,12 @@ export default class tower {
 
 
         this.hpP = document.createElement('p')
+        this.hpP.id = 'hpP'
         this.div.appendChild(this.hpP)
         this.updateHp()
+
+
+        document.body.innerHTML += '<svg width="250" height="250" viewBox="0 0 250 250" class="circular-progress"><circle class="bg"></circle><circle class="fg"></circle></svg>'
 
         this.size = 75
         document.documentElement.style.setProperty('--sizeTower', this.size + 'px');
@@ -30,10 +32,7 @@ export default class tower {
 
         this.setTarget()
     }
-    updateHp() {
-        this.hp = towerStats.hp
-        this.hpP.innerHTML = this.hp
-    }
+    updateHp() { this.hpP.innerHTML = towerStats.hp }
     setTarget() {
         if (towerStats.gameOn) setTimeout(() => {
             if (towerStats.closest) this.bullets.push(new bullet(angleToTarget(towerStats.closest.left, towerStats.closest.top)))

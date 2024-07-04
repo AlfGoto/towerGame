@@ -2,7 +2,7 @@ import { randomBetweenTwoInt, distanceToPlayer, angleToPlayer } from "./utils.js
 import towerStats from './towerStats.js'
 
 export default class basic {
-    constructor(pv = 1, atk = 1, speed = 10, size = 25, toStopWalking = 0, shooter = false) {
+    constructor(pv = 1, atk = 1, speed = 10, size = 25, xp = 1, toStopWalking = 0, shooter = false) {
         this.pv = pv
         this.maxPv = pv
         this.speed = 100 / speed
@@ -10,6 +10,7 @@ export default class basic {
         this.toStopWalking = toStopWalking + 50
         this.shooter = shooter
         this.size = size
+        this.xp = xp
         document.documentElement.style.setProperty('--' + this.constructor.name + 'Size', this.size + 'px');
 
         this.spawn()
@@ -74,6 +75,7 @@ export default class basic {
             towerStats.enemies.splice(towerStats.enemies.indexOf(this), 1)
             if (this == towerStats.closest) towerStats.closestDistance = 10000
             this.div.remove()
+            towerStats.addXp(this.xp)
         }
     }
 }

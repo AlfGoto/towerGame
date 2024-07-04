@@ -1,6 +1,7 @@
 :root {
     --sizeTower: 50px;
     --basicSize: 25px;
+    --progress: 1;
 }
 
 * {
@@ -11,6 +12,7 @@
 }
 
 body {
+    display: grid;
     position: relative;
     width: 100svw;
     height: 100svh;
@@ -34,11 +36,11 @@ body {
         transform: translateX(-50%) translateY(-50%);
         background-color: rgb(255, 105, 105);
     }
-    .basic{
+    .basic {
         width: var(--basicSize);
         height: var(--basicSize)
     }
-    .bullet{
+    .bullet {
         position: absolute;
         transform: translateX(-50%) translateY(-50%);
         background-color: black;
@@ -46,4 +48,45 @@ body {
         height: 10px;
         border-radius: 50%;
     }
+}
+
+
+
+
+
+
+
+
+
+/* xpBar */
+.circular-progress {
+    --size: 250px;
+    --half-size: calc(var(--size) / 2);
+    --stroke-width: 20px;
+    --radius: calc((var(--size) - var(--stroke-width)) / 2);
+    --circumference: calc(var(--radius) * pi * 2);
+    --dash: calc((var(--progress) * var(--circumference)) / 100);
+    align-self: center;
+    justify-self: center;
+}
+
+.circular-progress circle {
+    cx: var(--half-size);
+    cy: var(--half-size);
+    r: var(--radius);
+    stroke-width: var(--stroke-width);
+    fill: none;
+    stroke-linecap: round;
+}
+
+.circular-progress circle.bg {
+    stroke: #f4f4f4;
+}
+
+.circular-progress circle.fg {
+    transform: rotate(-90deg);
+    transform-origin: var(--half-size) var(--half-size);
+    stroke-dasharray: var(--dash) calc(var(--circumference) - var(--dash));
+    transition: stroke-dasharray 0.3s linear 0s;
+    stroke: #D1FFBD;
 }

@@ -1,17 +1,31 @@
 export default {
     gameOn: true,
+
     hp: 10,
     maxHp: 10,
+
     shootingSpeed: 1,
-    dealDamage: function(arg){
-        if(this.hp - arg < 1){
+    dealDamage: function (arg) {
+        if (this.hp - arg < 1) {
             this.hp = 0
             this.gameOn = false
-        }else{
-            this.hp = this.hp - arg
-        }
+        } else { this.hp = this.hp - arg }
+        document.getElementById('hpP').innerHTML = this.hp
     },
+
     closest: undefined,
     closestDistance: 100000,
     enemies: [],
+
+    xp: 0,
+    maxXp: 5,
+    lvl: 1,
+    addXp: function (arg) {
+        if (this.xp + arg >= this.maxXp) {
+            this.lvl++
+            this.xp = this.xp + arg - this.maxXp
+            this.maxXp = Math.round(this.maxXp * 1.5)
+        } else { this.xp = this.xp + arg }
+        document.documentElement.style.setProperty('--progress', Math.round((this.xp / this.maxXp) * 100));
+    }
 }
