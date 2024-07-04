@@ -21,7 +21,7 @@ export class bullet {
         if ( !this.alive) return
         for(const foe of towerStats.enemies){
             if (distanceToTarget(this.left, this.top, foe.left, foe.top) < 20) {
-                foe.dealDamage(1)
+                foe.dealDamage(towerStats.damage)
                 this.alive = false
                 this.div.remove()
                 return
