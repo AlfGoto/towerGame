@@ -8,4 +8,4 @@ let maxEnnemy = 20
 
 
 towerStats.startTime()
-setInterval(() => { if (Array.from(document.getElementsByClassName('ennemy')).length < maxEnnemy) { towerStats.enemies.push(new basic()) } }, 1000)
+setInterval(() => { if (Array.from(document.getElementsByClassName('ennemy')).length < maxEnnemy && towerStats.gameOn) { towerStats.enemies.push(new basic()) } }, 1000)

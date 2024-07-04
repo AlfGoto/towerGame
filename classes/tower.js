@@ -14,7 +14,8 @@ export default class tower {
         this.hpP = document.createElement('p')
         this.hpP.id = 'hpP'
         this.div.appendChild(this.hpP)
-        this.updateHp()
+        // this.updateHp()
+        this.hpP.innerHTML = towerStats.hp
 
 
         document.body.innerHTML += '<svg width="250" height="250" viewBox="0 0 250 250" class="circular-progress"><circle class="bg"></circle><circle class="fg"></circle></svg>'
@@ -27,14 +28,14 @@ export default class tower {
         this.init()
     }
     init() {
-        setInterval(() => { this.updateHp() }, 100)
+        // setInterval(() => { this.updateHp() }, 100)
 
         this.setTarget()
     }
-    updateHp() { this.hpP.innerHTML = towerStats.hp }
+    // updateHp() { this.hpP.innerHTML = towerStats.hp}
     setTarget() {
-        if (towerStats.gameOn) setTimeout(() => {
-            if (towerStats.closest) this.bullets.push(new bullet(angleToTarget(towerStats.closest.left, towerStats.closest.top)))
+        setTimeout(() => {
+            if (towerStats.closest && towerStats.gameOn) this.bullets.push(new bullet(angleToTarget(towerStats.closest.left, towerStats.closest.top)))
             this.setTarget()
         }, 2000 / towerStats.shootingSpeed)
     }

@@ -41,9 +41,18 @@ export default class basic {
         this.move(angleToPlayer(this.left, this.top))
     }
     move(angle) {
-        if (!towerStats.gameOn) { return }
+        // if (!towerStats.gameOn) { return }
+        if (!towerStats.gameOn) { setTimeout(() => { this.move(angle) }, this.speed); return }
         if (this.pv <= 0) { return }
         let distance = distanceToPlayer(this.left, this.top)
+
+        if(towerStats.greenZone > 0 && distance > 160 && distance < 170){
+            this.dealDamage(towerStats.greenZone)
+        }
+
+
+
+
         if (distanceToPlayer(this.left, this.top) > this.toStopWalking) {
             this.left = this.left + (angle.left / 100)
             this.top = this.top + (angle.top / 100)
@@ -69,6 +78,7 @@ export default class basic {
         this.div.innerHTML = this.pv
     }
     dealDamage(arg) {
+        this.div.classList.add('shake')
         this.pv = this.pv - arg
         this.setPos()
         if (this.pv < 1) {
@@ -77,6 +87,7 @@ export default class basic {
             this.div.remove()
             towerStats.addXp(this.xp)
         }
+        setTimeout(()=>{this.div.classList.remove('shake')},200)
     }
 }
 

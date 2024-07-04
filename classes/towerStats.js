@@ -45,5 +45,14 @@ export default {
     greenZone: 0,
     damage: 1,
     shootingSpeed: 1,
+    addGreenZoneDamage: function(arg){
+        if(this.greenZone == 0)document.documentElement.style.setProperty('--greenZoneColor',  '#a6ff80');
+        this.greenZone += arg
+    },
+    addHp: function(arg){
+        this.hp += arg
+        this.maxHp += arg
+        document.getElementById('hpP').innerHTML = this.hp
+    },
 
 }

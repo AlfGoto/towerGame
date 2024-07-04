@@ -2,6 +2,7 @@
     --sizeTower: 50px;
     --basicSize: 25px;
     --progress: 1;
+    --greenZoneColor: #D1FFBD;
 }
 
 * {
@@ -28,12 +29,12 @@ body {
         border-radius: 50%;
         display: flex;
         justify-content: center;
-        align-items: center;    
+        align-items: center;
     }
 
     .ennemy {
         position: absolute;
-        transform: translateX(-50%) translateY(-50%);
+        transform: matrix(1, 0, 0, 1, -50%, -50%);
         background-color: rgb(255, 105, 105);
     }
     .basic {
@@ -48,7 +49,7 @@ body {
         height: 10px;
         border-radius: 50%;
     }
-    #displayUpgradeChosingScreen{
+    #displayUpgradeChosingScreen {
         position: absolute;
         justify-self: center;
         z-index: 10;
@@ -59,7 +60,7 @@ body {
         width: 90%;
         height: 90%;
 
-        div{
+        div {
             border: solid 1px gray;
             height: 60%;
             flex: 1;
@@ -69,13 +70,56 @@ body {
         }
     }
 }
-.hide{
+.hide {
     display: none !important;
 }
 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* SHAKE */
+@keyframes shake {
+    0% {
+        transform: rotate(0deg);
+    }
+    20% {
+        transform: rotate(-10deg);
+    }
+    40% {
+        transform: rotate(10deg);
+    }
+    60% {
+        transform: rotate(-10deg);
+    }
+    80% {
+        transform: rotate(10deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.shake {
+    animation: shake 0.15s linear infinite;
+}
 /* xpBar */
 .circular-progress {
     --size: 250px;
@@ -106,5 +150,5 @@ body {
     transform-origin: var(--half-size) var(--half-size);
     stroke-dasharray: var(--dash) calc(var(--circumference) - var(--dash));
     transition: stroke-dasharray 0.3s linear 0s;
-    stroke: #D1FFBD;
+    stroke: var(--greenZoneColor);
 }
