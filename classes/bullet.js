@@ -4,26 +4,36 @@ import towerStats from './towerStats.js'
 export class bullet {
     constructor(angle) {
         this.angle = angle
-        // this.target = target
-        // this.angle = angleToTarget(this.target.left, this.target.top)
+        this.piercing = towerStats.piercing
         this.div = document.createElement('div')
         this.div.classList.add('bullet')
         document.body.appendChild(this.div)
         this.left = window.innerWidth / 2
         this.top = window.innerHeight / 2
         this.setPos()
+        this.alreadyTouched = []
 
         this.alive = true
         this.travel()
         setTimeout(() => { this.div.remove(); this.alive = false }, 3000)
     }
     travel() {
-        if ( !this.alive) return
-        for(const foe of towerStats.enemies){
+        if (!this.alive) return
+        for (const foe of towerStats.enemies) {
             if (distanceToTarget(this.left, this.top, foe.left, foe.top) < 21) {
+                if(this.alreadyTouched.includes(foe))continue
+
                 foe.dealDamage(towerStats.damage)
-                this.alive = false
-                this.div.remove()
+
+                if (this.piercing === 0) {
+                    this.alive = false
+                    this.alreadyTouched = []
+                    this.div.remove();
+                } else {
+                    this.alreadyTouched.push(foe)
+                    this.piercing--
+                    break;
+                }
                 return
             }
         }

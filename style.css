@@ -61,10 +61,11 @@ body {
         height: 90%;
 
         div {
+            padding: 1svw;
             border: solid 1px gray;
             height: 60%;
             flex: 1;
-            margin: 30px;
+            margin: 1svw;
             display: flex;
             flex-direction: column;
         }
@@ -77,7 +78,11 @@ body {
 
 
 
-
+#O{
+    position: absolute;
+    z-index: 10;
+    font-size: 40px;
+}
 
 
 

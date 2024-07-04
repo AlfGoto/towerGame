@@ -27,15 +27,10 @@ export default class tower {
 
         this.init()
     }
-    init() {
-        // setInterval(() => { this.updateHp() }, 100)
-
-        this.setTarget()
-    }
-    // updateHp() { this.hpP.innerHTML = towerStats.hp}
+    init() {this.setTarget()}
     setTarget() {
+        if (towerStats.closest && towerStats.gameOn) this.bullets.push(new bullet(angleToTarget(towerStats.closest.left, towerStats.closest.top)))
         setTimeout(() => {
-            if (towerStats.closest && towerStats.gameOn) this.bullets.push(new bullet(angleToTarget(towerStats.closest.left, towerStats.closest.top)))
             this.setTarget()
         }, 2000 / towerStats.shootingSpeed)
     }

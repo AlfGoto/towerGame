@@ -21,7 +21,7 @@ export default {
 
     //ENEMIES
     closest: undefined,
-    closestDistance: 100000,
+    closestDistance: 2000,
     enemies: [],
 
 
@@ -54,5 +54,6 @@ export default {
         this.maxHp += arg
         document.getElementById('hpP').innerHTML = this.hp
     },
+    piercing: 0,
 
 }

@@ -12,6 +12,7 @@ export default class basic {
         this.size = size
         this.xp = xp
         document.documentElement.style.setProperty('--' + this.constructor.name + 'Size', this.size + 'px');
+        this.canBeGreenZoned = true
 
         this.spawn()
     }
@@ -46,8 +47,11 @@ export default class basic {
         if (this.pv <= 0) { return }
         let distance = distanceToPlayer(this.left, this.top)
 
-        if(towerStats.greenZone > 0 && distance > 160 && distance < 170){
+        if(this.canBeGreenZoned && towerStats.greenZone > 0 && distance > 160 && distance < 170){
             this.dealDamage(towerStats.greenZone)
+            this.canBeGreenZoned = false
+            setTimeout(() => { this.move(angle) }, this.speed)
+            return
         }
 
 
@@ -69,7 +73,7 @@ export default class basic {
             this.div.remove()
             towerStats.enemies.splice(towerStats.enemies.indexOf(this), 1)
             towerStats.dealDamage(1)
-            if (towerStats.closest == this) towerStats.closestDistance = 1000
+            if (towerStats.closest == this) towerStats.closestDistance = 1500
         }
     }
     setPos() {
@@ -78,17 +82,16 @@ export default class basic {
         this.div.innerHTML = this.pv
     }
     dealDamage(arg) {
+        // towerStats.closest = null
+        towerStats.closestDistance = 1500
         this.div.classList.add('shake')
         this.pv = this.pv - arg
         this.setPos()
         if (this.pv < 1) {
             towerStats.enemies.splice(towerStats.enemies.indexOf(this), 1)
-            if (this == towerStats.closest) towerStats.closestDistance = 10000
             this.div.remove()
             towerStats.addXp(this.xp)
         }
         setTimeout(()=>{this.div.classList.remove('shake')},200)
     }
 }
-
-//towerStats.closestDistance = 10000
