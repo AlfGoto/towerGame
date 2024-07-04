@@ -28,7 +28,7 @@ body {
         border-radius: 50%;
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: center;    
     }
 
     .ennemy {
@@ -48,12 +48,30 @@ body {
         height: 10px;
         border-radius: 50%;
     }
+    #displayUpgradeChosingScreen{
+        position: absolute;
+        justify-self: center;
+        z-index: 10;
+        justify-content: space-evenly;
+        align-items: center;
+
+        display: flex;
+        width: 90%;
+        height: 90%;
+
+        div{
+            border: solid 1px gray;
+            height: 60%;
+            flex: 1;
+            margin: 30px;
+            display: flex;
+            flex-direction: column;
+        }
+    }
 }
-
-
-
-
-
+.hide{
+    display: none !important;
+}
 
 
 

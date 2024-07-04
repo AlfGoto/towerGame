@@ -3,3 +3,4 @@ export function distanceToPlayer(left, top) { return (Math.abs(window.innerHeigh
 export function distanceToTarget(left, top, tLeft, tTop) { return (Math.abs(tTop - top)) + (Math.abs(tLeft - left)) }
 export function angleToPlayer(left, top) { return { top: Math.round(((window.innerHeight / 2 - top) / distanceToPlayer(left, top)) * 100), left: Math.round(((window.innerWidth / 2 - left) / distanceToPlayer(left, top)) * 100) } }
 export function angleToTarget(left, top) { let ang = angleToPlayer(left, top); return { top: ang.top * -1, left: ang.left * -1 } }
+export function shuffle(array) { for (var i = array.length - 1; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var temp = array[i]; array[i] = array[j]; array[j] = temp; } }

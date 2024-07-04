@@ -27,7 +27,6 @@ export default class tower {
         this.init()
     }
     init() {
-        console.log('Tower is up')
         setInterval(() => { this.updateHp() }, 100)
 
         this.setTarget()

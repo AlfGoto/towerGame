@@ -1,3 +1,5 @@
+import upgradeChosingScreen from "./upgradeChosingScreen.js"
+
 export default {
     //STATE OF THE GAME
     gameOn: true,
@@ -33,6 +35,7 @@ export default {
             this.lvl++
             this.xp = this.xp + arg - this.maxXp
             this.maxXp = Math.round(this.maxXp * 1.5)
+            upgradeChosingScreen.display()
         } else { this.xp = this.xp + arg }
         document.documentElement.style.setProperty('--progress', Math.round((this.xp / this.maxXp) * 100));
     },
