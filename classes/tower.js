@@ -26,7 +26,7 @@ export default class tower {
     setTarget() {
         if (towerStats.closest && towerStats.gameOn) {
             let angle = angleToTarget(towerStats.closest.left, towerStats.closest.top)
-            towerStats.bullets.push(new bullet(angle))
+            towerStats.bullets.push(new bullet({angle: angle}))
             if (towerStats.eventail > 0) {
                 let iteration = 0
                 let iterationLeft = towerStats.eventail
@@ -39,7 +39,7 @@ export default class tower {
                     if (iteration % 2 == 1) gap += 15
                     gap *= -1
                     let tempAngle = { top: angle.top - gap*(angle.left/100), left: angle.left + gap*(angle.top/100) }
-                    towerStats.bullets.push(new bullet(tempAngle))
+                    towerStats.bullets.push(new bullet({angle: tempAngle}))
                 }
             }
         }

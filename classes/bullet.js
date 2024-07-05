@@ -1,15 +1,20 @@
-import { distanceToTarget } from './utils.js'
+import { distanceToTarget, randomBetweenTwoInt } from './utils.js'
 import towerStats from './towerStats.js'
 
 export class bullet {
-    constructor(angle, multiShoot = towerStats.multishoot) {
-        this.angle = angle
+    constructor(obj) {
+        this.angle = obj.angle
+        this.child = obj.child || false
+        this.multiShoot = obj.multiShoot || towerStats.multishoot
+        this.left = obj.left || window.innerWidth / 2
+        this.top = obj.top || window.innerHeight / 2
+
+        this.angle = this.angle
         this.piercing = towerStats.piercing
         this.div = document.createElement('div')
         this.div.classList.add('bullet')
+        if(this.child)this.div.classList.add('child')
         document.body.appendChild(this.div)
-        this.left = window.innerWidth / 2
-        this.top = window.innerHeight / 2
         this.setPos()
         this.alreadyTouched = []
 
@@ -17,7 +22,7 @@ export class bullet {
         this.travel()
         setTimeout(() => { this.div.remove(); this.alive = false }, 3000)
 
-        if(multiShoot > 0){setTimeout(()=>{towerStats.bullets.push(new bullet(angle, multiShoot - 1))}, 75)}
+        if(this.multiShoot > 0){setTimeout(()=>{towerStats.bullets.push(new bullet({angle: this.angle, multiShoot: this.multiShoot - 1}))}, 75)}
     }
     travel() {
         if (!this.alive) return
@@ -26,6 +31,17 @@ export class bullet {
                 if(this.alreadyTouched.includes(foe))continue
 
                 foe.dealDamage(towerStats.damage)
+
+                if(!this.child){
+                    let childrenLeft = towerStats.bulletChild
+                    while(childrenLeft > 0){
+                        childrenLeft--
+                        let top = randomBetweenTwoInt(-100, 100)
+                        let left =  100 - Math.abs(top)
+                        if(Math.random() > 0.5)left *= -1
+                        towerStats.bullets.push(new bullet({angle: {top: top, left: left}, child: true, top: foe.top, left: foe.left}))
+                    }
+                }
 
                 if (this.piercing === 0) {
                     this.alive = false

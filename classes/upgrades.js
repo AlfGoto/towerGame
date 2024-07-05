@@ -8,5 +8,6 @@ const upgrades = [
     {name: "i'm a PUNK", func: ()=>{towerStats.piercing++}, desc: 'Your bullets now pierce one more ennemie'},
     {name: "i need more BULLETS", func: ()=>{towerStats.eventail++}, desc: 'Add one bullet to the side'},
     {name: "double SHOT", func: ()=>{towerStats.multishoot++}, desc: 'shoot one more bullet each times'},
+    {name: "bullet is PREGNANT ???", func: ()=>{towerStats.bulletChild++}, desc: 'when a bullet hit, another bullet is fired in a random direction'},
 ]
 export default upgrades
