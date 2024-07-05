@@ -2,7 +2,7 @@ import { distanceToTarget } from './utils.js'
 import towerStats from './towerStats.js'
 
 export class bullet {
-    constructor(angle) {
+    constructor(angle, multiShoot = towerStats.multishoot) {
         this.angle = angle
         this.piercing = towerStats.piercing
         this.div = document.createElement('div')
@@ -16,6 +16,8 @@ export class bullet {
         this.alive = true
         this.travel()
         setTimeout(() => { this.div.remove(); this.alive = false }, 3000)
+
+        if(multiShoot > 0){setTimeout(()=>{towerStats.bullets.push(new bullet(angle, multiShoot - 1))}, 75)}
     }
     travel() {
         if (!this.alive) return

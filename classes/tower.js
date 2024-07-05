@@ -20,15 +20,13 @@ export default class tower {
         this.size = 75
         document.documentElement.style.setProperty('--sizeTower', this.size + 'px');
 
-        this.bullets = []
-
         this.init()
     }
     init() { this.setTarget() }
     setTarget() {
         if (towerStats.closest && towerStats.gameOn) {
             let angle = angleToTarget(towerStats.closest.left, towerStats.closest.top)
-            this.bullets.push(new bullet(angle))
+            towerStats.bullets.push(new bullet(angle))
             if (towerStats.eventail > 0) {
                 let iteration = 0
                 let iterationLeft = towerStats.eventail
@@ -38,13 +36,14 @@ export default class tower {
                 while (iterationLeft > 0) {
                     iteration++
                     iterationLeft--
-                    if (iteration % 2 == 1) gap += 20
+                    if (iteration % 2 == 1) gap += 15
                     gap *= -1
-                    let tempAngle = { top: angle.top + gap*(angle.top/100), left: angle.left - gap*(angle.left/100) }
-                    this.bullets.push(new bullet(tempAngle))
+                    let tempAngle = { top: angle.top - gap*(angle.left/100), left: angle.left + gap*(angle.top/100) }
+                    towerStats.bullets.push(new bullet(tempAngle))
                 }
             }
         }
+        towerStats.bullets = []
         setTimeout(() => {
             this.setTarget()
         }, 2000 / towerStats.shootingSpeed)

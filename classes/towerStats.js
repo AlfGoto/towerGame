@@ -7,7 +7,7 @@ export default {
     startTime: function(){setInterval(()=>{this.time++},1000)},
 
 
-    //HP
+    //TOWER
     hp: 10,
     maxHp: 10,
     dealDamage: function (arg) {
@@ -17,6 +17,7 @@ export default {
         } else { this.hp = this.hp - arg }
         document.getElementById('hpP').innerHTML = this.hp
     },
+    bullets: [],
 
 
     //ENEMIES
@@ -56,5 +57,6 @@ export default {
     },
     piercing: 0,
     eventail: 0,
+    multishoot: 0,
 
 }
