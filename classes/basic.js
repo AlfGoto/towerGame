@@ -10,7 +10,7 @@ export default class basic {
         this.toStopWalking = obj.toStopWalking + 50 || 50
         this.shooter = obj.shooter || false
         this.size = obj.size || 25
-        this.xp = obj.xp || 1
+        this.xp = obj.xp || Math.round(this.pv/2)
 
         document.documentElement.style.setProperty('--' + this.constructor.name + 'Size', this.size + 'px');
         this.canBeGreenZoned = true

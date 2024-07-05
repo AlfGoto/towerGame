@@ -66,13 +66,18 @@ body {
 
         div {
             padding: 1svw;
-            border: solid 1px gray;
+            border: solid 1px rgb(158, 158, 158);
             height: 60%;
             flex: 1;
             margin: 1svw;
             display: flex;
             flex-direction: column;
+            backdrop-filter: blur(2px);
         }
+    }
+    #gameOverScreen{
+        width: 90%;
+        height: 90%;
     }
 }
 .hide {

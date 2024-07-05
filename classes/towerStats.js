@@ -4,7 +4,7 @@ export default {
     //STATE OF THE GAME
     gameOn: true,
     time: 0,
-    startTime: function(){setInterval(()=>{this.time++},1000)},
+    startTime: function(){setInterval(()=>{if(this.gameOn)this.time++},1000)},
 
 
     //TOWER
@@ -18,6 +18,7 @@ export default {
         document.getElementById('hpP').innerHTML = this.hp
     },
     bullets: [],
+    range: 1000,
 
 
     //ENEMIES

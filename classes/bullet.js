@@ -20,7 +20,7 @@ export class bullet {
 
         this.alive = true
         this.travel()
-        setTimeout(() => { this.div.remove(); this.alive = false }, 3000)
+        setTimeout(() => { this.div.remove(); this.alive = false; towerStats.bullets = [] }, towerStats.range)
 
         if (this.multiShoot > 1) { setTimeout(() => { towerStats.bullets.push(new bullet({ angle: this.angle, multiShoot: this.multiShoot - 1 })) }, 75) }
     }
