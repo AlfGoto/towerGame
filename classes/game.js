@@ -14,21 +14,21 @@ export default class jeu {
         this.startGame()
     }
     startGame() {
-        for (const [key, value] of Object.entries(gameStats)) {
-            console.log(towerStats[key])
-            towerStats[key] = value
-        }
-        towerStats.enemies = []
+        while (towerStats.enemies.length > 0) { towerStats.enemies[0].kill() }
+        for (const [key, value] of Object.entries(gameStats)) { towerStats[key] = value }
+        towerStats.hp = towerStats.maxHp
+        document.getElementById('hpP').innerHTML = towerStats.hp
         towerStats.time = 0
         towerStats.startTime()
-
-        console.log(towerStats)
+        towerStats.gameOn = true
+        towerStats.resetXp()
 
         this.gameOn = true
         this.spawnMob()
         this.detectLose()
     }
     spawnMob() {
+        this.detectLose()
         if (Array.from(document.getElementsByClassName('ennemy')).length < this.maxEnnemy && towerStats.gameOn) {
             towerStats.enemies.push(new basic({ pv: randomBetweenTwoInt(1, Math.floor(towerStats.time / 10)) }))
             if (this.delay > 50) this.delay *= 0.9995
@@ -36,13 +36,40 @@ export default class jeu {
         if (this.gameOn) setTimeout(() => { this.spawnMob() }, 100 + this.delay)
     }
     detectLose() {
-        if (towerStats.pv <= 0) { this.lose(); this.gameOn = false }
-        if (this.gameOn) setTimeout(() => { this.detectLose }, 500)
+        if (towerStats.hp <= 0) { this.lose(); this.gameOn = false }
     }
     lose() {
-        console.log('LOSE')
         this.div = document.createElement('div')
         document.body.appendChild(this.div)
         this.div.id = 'gameOverScreen'
+        towerStats.stopTime()
+
+
+        this.buildHead()
+        this.buildBody()
+        this.buildFeet()
+    }
+    buildHead() {
+        this.head = document.createElement('div')
+        this.div.appendChild(this.head)
+
+        this.title = document.createElement('h2')
+        this.head.appendChild(this.title)
+        this.title.innerHTML = 'You lost'
+    }
+    buildBody() {
+        this.body = document.createElement('div')
+        this.div.appendChild(this.body)
+    }
+    buildFeet() {
+        this.feet = document.createElement('div')
+        this.div.appendChild(this.feet)
+        this.replayButton = document.createElement('button')
+        this.feet.appendChild(this.replayButton)
+        this.replayButton.innerHTML = 'Replay !'
+        this.replayButton.onclick = () => {
+            this.div.remove()
+            this.startGame()
+        }
     }
 }

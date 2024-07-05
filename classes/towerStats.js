@@ -4,7 +4,8 @@ export default {
     //STATE OF THE GAME
     gameOn: true,
     time: 0,
-    startTime: function(){setInterval(()=>{if(this.gameOn)this.time++},1000)},
+    startTime: function(){this.timeInterval = setInterval(()=>{if(this.gameOn)this.time++},1000)},
+    stopTime: function(){clearInterval(this.timeInterval)},
 
 
     //TOWER
@@ -37,8 +38,13 @@ export default {
             this.lvl++
             this.xp = this.xp + arg - this.maxXp
             this.maxXp = Math.round(this.maxXp * 1.5)
-            upgradeChosingScreen.display()
+            if(this.gameOn)upgradeChosingScreen.display()
         } else { this.xp = this.xp + arg }
+        document.documentElement.style.setProperty('--progress', Math.round((this.xp / this.maxXp) * 100));
+    },
+    resetXp: function(){
+        this.xp = 0
+        this.lvl = 1
         document.documentElement.style.setProperty('--progress', Math.round((this.xp / this.maxXp) * 100));
     },
 

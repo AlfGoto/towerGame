@@ -16,7 +16,6 @@ export default class basic {
         this.canBeGreenZoned = true
 
         this.spawn()
-        // console.log(this.pv)
     }
     spawn() {
         let y = randomBetweenTwoInt(-this.size, window.innerHeight + this.size)
@@ -83,7 +82,6 @@ export default class basic {
         this.div.innerHTML = this.pv
     }
     dealDamage(arg) {
-        // towerStats.closest = null
         towerStats.closestDistance = 1500
         this.div.classList.add('shake')
         this.pv = this.pv - arg
@@ -94,5 +92,12 @@ export default class basic {
             towerStats.addXp(this.xp)
         }
         setTimeout(()=>{this.div.classList.remove('shake')},200)
+    }
+    kill(){
+        this.pv = 0
+        towerStats.enemies.splice(towerStats.enemies.indexOf(this), 1)
+        this.div.remove()
+        towerStats.addXp(this.xp)
+        towerStats.closestDistance = 1500
     }
 }

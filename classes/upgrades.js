@@ -72,7 +72,7 @@ const upgrades = [
         desc: 'your bullets go now further',
         upgrade: () => { gameStats.range += 500 },
         lvl: 1,
-        price: 5,
+        price: 20,
     },
 ]
 export default upgrades
