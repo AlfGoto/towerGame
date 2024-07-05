@@ -56,9 +56,11 @@ export class bullet {
             }
         }
         setTimeout(() => {
-            this.left = this.left + (this.angle.left / 5)
-            this.top = this.top + (this.angle.top / 5)
-            this.setPos()
+            if(towerStats.gameOn){
+                this.left = this.left + (this.angle.left / 5)
+                this.top = this.top + (this.angle.top / 5)
+                this.setPos()
+            }
             this.travel()
         }, 20)
     }

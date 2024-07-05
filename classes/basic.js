@@ -16,6 +16,7 @@ export default class basic {
         this.canBeGreenZoned = true
 
         this.spawn()
+        // console.log(this.pv)
     }
     spawn() {
         let y = randomBetweenTwoInt(-this.size, window.innerHeight + this.size)
@@ -43,7 +44,6 @@ export default class basic {
         this.move(angleToPlayer(this.left, this.top))
     }
     move(angle) {
-        // if (!towerStats.gameOn) { return }
         if (!towerStats.gameOn) { setTimeout(() => { this.move(angle) }, this.speed); return }
         if (this.pv <= 0) { return }
         let distance = distanceToPlayer(this.left, this.top)

@@ -7,8 +7,9 @@ import { randomBetweenTwoInt } from './utils.js'
 export default class jeu {
     constructor() {
         this.Tower = new TowerBuilder()
-        this.maxEnnemy = 20
+        this.maxEnnemy = 100
         this.delay = 1000
+        this.gameOn = true
 
 
         towerStats.startTime()
@@ -16,9 +17,9 @@ export default class jeu {
     }
     spawnMob() {
         if (Array.from(document.getElementsByClassName('ennemy')).length < this.maxEnnemy && towerStats.gameOn) {
-            towerStats.enemies.push(new basic(randomBetweenTwoInt(1, Math.floor(towerStats.time / 10))))
+            towerStats.enemies.push(new basic({ pv: randomBetweenTwoInt(1, Math.floor(towerStats.time / 10)) }))
             if (this.delay > 50) this.delay *= 0.9995
         }
-        setTimeout(() => { this.spawnMob() }, 100 + this.delay)
+        if(this.gameOn)setTimeout(() => { this.spawnMob() }, 100 + this.delay)
     }
 }
