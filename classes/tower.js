@@ -7,8 +7,6 @@ export default class tower {
         this.div = document.createElement('div')
         document.body.appendChild(this.div)
         this.div.id = 'tower'
-        this.div.style.top = (window.innerHeight / 2) + 'px'
-        this.div.style.left = (window.innerWidth / 2) + 'px'
 
         this.hpP = document.createElement('p')
         this.hpP.id = 'hpP'

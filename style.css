@@ -30,6 +30,8 @@ body {
         display: flex;
         justify-content: center;
         align-items: center;
+        top: 50%;
+        left: 50%;
     }
 
     .ennemy {
@@ -49,7 +51,7 @@ body {
         height: 8px;
         border-radius: 50%;
 
-        &.child{
+        &.child {
             background-color: gray;
         }
     }
@@ -75,13 +77,40 @@ body {
             backdrop-filter: blur(2px);
         }
     }
-    #gameOverScreen{
+    #gameOverScreen {
         align-self: center;
         justify-self: center;
         position: absolute;
         width: 85%;
         height: 85%;
         backdrop-filter: blur(5px);
+        display: flex;
+        flex-direction: column;
+
+        div{
+            display: flex;
+            justify-content: center;
+        }
+
+        div:nth-child(1) {
+            flex: 1
+        }
+        div:nth-child(2) {
+            flex: 10;
+        }
+        div:nth-child(3) {
+            flex: 1;
+            button{
+                padding: 1svw 1svh;
+                font-size: 2svh;
+                border: solid gray 1px;
+                background-color: #D1FFBD;
+
+                &:hover{
+                    background-color: #b4f798;
+                }
+            }
+        }
     }
 }
 .hide {
@@ -91,7 +120,7 @@ body {
 
 
 
-#O{
+#O {
     position: absolute;
     z-index: 10;
     font-size: 40px;
