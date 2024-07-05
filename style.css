@@ -38,6 +38,9 @@ body {
         position: absolute;
         transform: matrix(1, 0, 0, 1, -50%, -50%);
         background-color: rgb(255, 105, 105);
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     .basic {
         width: var(--basicSize);
