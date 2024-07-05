@@ -13,15 +13,6 @@ export default class jeu {
 
         towerStats.startTime()
         this.spawnMob()
-
-
-        // setInterval(() => {
-        //     let O = document.getElementById('O')
-        //     if (towerStats.closest) {
-        //         O.style.left = towerStats.closest.left + 'px'
-        //         O.style.top = towerStats.closest.top + 'px'
-        //     }
-        // }, 10)
     }
     spawnMob() {
         if (Array.from(document.getElementsByClassName('ennemy')).length < this.maxEnnemy && towerStats.gameOn) {

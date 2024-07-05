@@ -8,6 +8,7 @@ export class bullet {
         this.multiShoot = obj.multiShoot || towerStats.multishoot
         this.left = obj.left || window.innerWidth / 2
         this.top = obj.top || window.innerHeight / 2
+        this.alreadyTouched = obj.alreadyTouched || []
 
         this.angle = this.angle
         this.piercing = towerStats.piercing
@@ -16,7 +17,6 @@ export class bullet {
         if (this.child) this.div.classList.add('child')
         document.body.appendChild(this.div)
         this.setPos()
-        this.alreadyTouched = []
 
         this.alive = true
         this.travel()
@@ -39,7 +39,7 @@ export class bullet {
                         let top = randomBetweenTwoInt(-100, 100)
                         let left = 100 - Math.abs(top)
                         if (Math.random() > 0.5) left *= -1
-                        towerStats.bullets.push(new bullet({ angle: { top: top, left: left }, child: true, top: foe.top, left: foe.left }))
+                        towerStats.bullets.push(new bullet({ angle: { top: top, left: left }, child: true, top: foe.top, left: foe.left, alreadyTouched: [foe] }))
                     }
                 }
 

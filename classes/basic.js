@@ -2,15 +2,16 @@ import { randomBetweenTwoInt, distanceToPlayer, angleToPlayer } from "./utils.js
 import towerStats from './towerStats.js'
 
 export default class basic {
-    constructor(pv = 1, atk = 1, speed = 10, size = 25, xp = 1, toStopWalking = 0, shooter = false) {
-        this.pv = pv
-        this.maxPv = pv
-        this.speed = 100 / speed
-        this.atk = atk
-        this.toStopWalking = toStopWalking + 50
-        this.shooter = shooter
-        this.size = size
-        this.xp = xp
+    constructor(obj) {
+        this.pv = obj.pv || 1
+        this.maxPv = obj.pv || 1
+        this.speed = 100 / obj.speed || 100 / 10
+        this.atk = obj.atk || 1
+        this.toStopWalking = obj.toStopWalking + 50 || 50
+        this.shooter = obj.shooter || false
+        this.size = obj.size || 25
+        this.xp = obj.xp || 1
+
         document.documentElement.style.setProperty('--' + this.constructor.name + 'Size', this.size + 'px');
         this.canBeGreenZoned = true
 
