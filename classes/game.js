@@ -11,6 +11,7 @@ export default class jeu {
         this.delay = 1000
         this.gameOn = true
 
+        this.visibilityChange()
         this.startGame()
     }
     startGame() {
@@ -71,5 +72,17 @@ export default class jeu {
             this.div.remove()
             this.startGame()
         }
+    }
+
+    visibilityChange() {
+        document.onvisibilitychange = () => {
+            if (document.visibilityState === "hidden") {
+                this.gameOn = false
+                towerStats.gameOn = false
+            }else{
+                this.gameOn = true
+                towerStats.gameOn = true
+            }
+        };
     }
 }
