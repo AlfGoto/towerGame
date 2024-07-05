@@ -43,7 +43,7 @@ export default {
 
     //UPGRADES
     greenZone: 0,
-    damage: 1,
+    damage: 10,
     shootingSpeed: 1,
     addGreenZoneDamage: function(arg){
         if(this.greenZone == 0)document.documentElement.style.setProperty('--greenZoneColor',  '#a6ff80');
@@ -55,5 +55,6 @@ export default {
         document.getElementById('hpP').innerHTML = this.hp
     },
     piercing: 0,
+    eventail: 0,
 
 }
