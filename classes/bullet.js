@@ -13,7 +13,7 @@ export class bullet {
         this.piercing = towerStats.piercing
         this.div = document.createElement('div')
         this.div.classList.add('bullet')
-        if(this.child)this.div.classList.add('child')
+        if (this.child) this.div.classList.add('child')
         document.body.appendChild(this.div)
         this.setPos()
         this.alreadyTouched = []
@@ -22,24 +22,24 @@ export class bullet {
         this.travel()
         setTimeout(() => { this.div.remove(); this.alive = false }, 3000)
 
-        if(this.multiShoot > 0){setTimeout(()=>{towerStats.bullets.push(new bullet({angle: this.angle, multiShoot: this.multiShoot - 1}))}, 75)}
+        if (this.multiShoot > 1) { setTimeout(() => { towerStats.bullets.push(new bullet({ angle: this.angle, multiShoot: this.multiShoot - 1 })) }, 75) }
     }
     travel() {
         if (!this.alive) return
         for (const foe of towerStats.enemies) {
             if (distanceToTarget(this.left, this.top, foe.left, foe.top) < 21) {
-                if(this.alreadyTouched.includes(foe))continue
+                if (this.alreadyTouched.includes(foe)) continue
 
                 foe.dealDamage(towerStats.damage)
 
-                if(!this.child){
+                if (!this.child) {
                     let childrenLeft = towerStats.bulletChild
-                    while(childrenLeft > 0){
+                    while (childrenLeft > 0) {
                         childrenLeft--
                         let top = randomBetweenTwoInt(-100, 100)
-                        let left =  100 - Math.abs(top)
-                        if(Math.random() > 0.5)left *= -1
-                        towerStats.bullets.push(new bullet({angle: {top: top, left: left}, child: true, top: foe.top, left: foe.left}))
+                        let left = 100 - Math.abs(top)
+                        if (Math.random() > 0.5) left *= -1
+                        towerStats.bullets.push(new bullet({ angle: { top: top, left: left }, child: true, top: foe.top, left: foe.left }))
                     }
                 }
 

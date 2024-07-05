@@ -57,7 +57,7 @@ export default {
     },
     piercing: 0,
     eventail: 0,
-    multishoot: 0,
-    bulletChild: 10,
+    multishoot: 1,
+    bulletChild: 0,
 
 }
