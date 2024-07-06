@@ -12,7 +12,7 @@ const upgrades = [
         adj: 'damage',
         towerStats: function(){return towerStats.greenZone},
         gameStats: function(){return gameStats.greenZone},
-        add: 5,
+        add: 4,
     },
     {
         name: 'More DAMAGE',
@@ -113,10 +113,5 @@ const upgrades = [
 ]
 
 
-
-//upgrades hors game
-//xpMax--
-//spawn mobs plus fréquents (genre -200)
-//Mobs donnent + d'xp (0 -> 1)
 
 export default upgrades

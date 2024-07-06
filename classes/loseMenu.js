@@ -56,7 +56,7 @@ export default class {
                     e.upgrade()
                     this.setPoints(-e.price)
                     e.price = e.price * e.price
-                    price.innerHTML = e.price + 'lvls'
+                    price.innerHTML = e.price + ' lvls'
                 }
             }
         })

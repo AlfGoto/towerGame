@@ -63,8 +63,9 @@ export default {
         document.getElementById('hpP').innerHTML = this.hp
     },
     piercing: 0,
-    eventail: 0,
+    eventail: 1,
     multishoot: 1,
     bulletChild: 0,
+    delayDiviser: 0.9995,
 
 }

@@ -8,8 +8,9 @@ export default {
     damage: 1,
     shootingSpeed: 1,
     piercing: 0,
-    eventail: 0,
+    eventail: 1,
     multishoot: 1,
     bulletChild: 0,
     range: 1000,
+    delayDiviser: 0.9995,
 }

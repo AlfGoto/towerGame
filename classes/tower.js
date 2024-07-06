@@ -27,7 +27,7 @@ export default class tower {
             towerStats.bullets.push(new bullet({angle: angle}))
             if (towerStats.eventail > 0) {
                 let iteration = 0
-                let iterationLeft = towerStats.eventail
+                let iterationLeft = towerStats.eventail - 1
                 let gap = 1
 
                 //iteration

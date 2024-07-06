@@ -22,7 +22,7 @@ export class bullet {
         this.travel()
         setTimeout(() => { this.div.remove(); this.alive = false; towerStats.bullets = [] }, towerStats.range)
 
-        if (this.multiShoot > 1) { setTimeout(() => { towerStats.bullets.push(new bullet({ angle: this.angle, multiShoot: this.multiShoot - 1 })) }, 75) }
+        if (this.multiShoot > 1 && !this.child) { setTimeout(() => { towerStats.bullets.push(new bullet({ angle: this.angle, multiShoot: this.multiShoot - 1 })) }, 75) }
     }
     travel() {
         if (!this.alive) return

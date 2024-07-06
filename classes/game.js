@@ -37,11 +37,11 @@ export default class jeu {
             towerStats.enemies.push(new basic(
                 {
                     pv: randomBetweenTwoInt(
-                        1 + Math.floor(this.numberOfGamesDone / 2),
-                        Math.floor(towerStats.time / 10) + Math.floor(this.numberOfGamesDone / 2)
+                        1 + Math.floor(towerStats.time / 20) + Math.floor(this.numberOfGamesDone / 2),
+                        Math.floor(towerStats.time / 5) + Math.floor(this.numberOfGamesDone / 2)
                     )
                 }))
-            if (this.delay > 50) this.delay *= 0.9995
+            if (this.delay > 50) this.delay *= gameStats.delayDiviser
         }
         if (this.gameOn) setTimeout(() => { this.spawnMob() }, 100 + this.delay)
     }
