@@ -1,6 +1,8 @@
 export default {
     //TOWER
     maxHp: 10,
+    //XP
+    maxXp: 5,
     //UPGRADES
     greenZone: 0,
     damage: 1,

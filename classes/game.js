@@ -3,15 +3,17 @@ import basic from './basic.js'
 import towerStats from './towerStats.js'
 import { randomBetweenTwoInt } from './utils.js'
 import gameStats from './gameStats.js'
+import loseMenu from './loseMenu.js'
 
 export default class jeu {
     constructor() {
+        this.loseMenu = new loseMenu()
         this.Tower = new TowerBuilder()
         this.maxEnnemy = 100
         this.delay = 1000
         this.gameOn = true
 
-        this.visibilityChange()
+        // this.visibilityChange()
         this.startGame()
     }
     startGame() {
@@ -37,42 +39,9 @@ export default class jeu {
         if (this.gameOn) setTimeout(() => { this.spawnMob() }, 100 + this.delay)
     }
     detectLose() {
-        if (towerStats.hp <= 0) { this.lose(); this.gameOn = false }
+        if (towerStats.hp <= 0) { this.loseMenu.build(); this.gameOn = false }
     }
-    lose() {
-        this.div = document.createElement('div')
-        document.body.appendChild(this.div)
-        this.div.id = 'gameOverScreen'
-        towerStats.stopTime()
-
-
-        this.buildHead()
-        this.buildBody()
-        this.buildFeet()
-    }
-    buildHead() {
-        this.head = document.createElement('div')
-        this.div.appendChild(this.head)
-
-        this.title = document.createElement('h2')
-        this.head.appendChild(this.title)
-        this.title.innerHTML = 'You lost'
-    }
-    buildBody() {
-        this.body = document.createElement('div')
-        this.div.appendChild(this.body)
-    }
-    buildFeet() {
-        this.feet = document.createElement('div')
-        this.div.appendChild(this.feet)
-        this.replayButton = document.createElement('button')
-        this.feet.appendChild(this.replayButton)
-        this.replayButton.innerHTML = 'Replay !'
-        this.replayButton.onclick = () => {
-            this.div.remove()
-            this.startGame()
-        }
-    }
+    
 
     visibilityChange() {
         document.onvisibilitychange = () => {

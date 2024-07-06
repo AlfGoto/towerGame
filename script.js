@@ -3,3 +3,6 @@ let game = new jeu()
 
 import debug from './classes/debug.js'
 let debugO = new debug()
+
+
+export default game

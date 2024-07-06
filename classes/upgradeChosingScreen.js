@@ -5,9 +5,9 @@ import { shuffle } from './utils.js'
 class upgradeChosingScreen {
     constructor() {
         this.upgrades = [
-            { div: document.createElement('div'), title: document.createElement('h2'), desc: document.createElement('p') },
-            { div: document.createElement('div'), title: document.createElement('h2'), desc: document.createElement('p') },
-            { div: document.createElement('div'), title: document.createElement('h2'), desc: document.createElement('p') }
+            { div: document.createElement('div'), title: document.createElement('h2'), desc: document.createElement('p'), data: document.createElement('p') },
+            { div: document.createElement('div'), title: document.createElement('h2'), desc: document.createElement('p'), data: document.createElement('p') },
+            { div: document.createElement('div'), title: document.createElement('h2'), desc: document.createElement('p'), data: document.createElement('p') }
         ]
     }
     display() {
@@ -17,13 +17,15 @@ class upgradeChosingScreen {
         this.div.id = 'displayUpgradeChosingScreen'
         shuffle(upgrades)
         for (let i = 0; i < 3; i++) {
-            this.div.appendChild(this.upgrades[i].div)
-            this.upgrades[i].div.appendChild(this.upgrades[i].title)
-            this.upgrades[i].div.appendChild(this.upgrades[i].desc)
-            this.upgrades[i].title.innerHTML = upgrades[i].name
-            this.upgrades[i].desc.innerHTML = upgrades[i].desc
-            this.upgrades[i].div.onclick = () => {
-                upgrades[i].func()
+            let dom = this.upgrades[i]
+            let up = upgrades[i]
+            this.div.appendChild(dom.div)
+            dom.div.append(dom.title, dom.desc, dom.data)
+            dom.title.innerHTML = up.name
+            dom.desc.innerHTML = up.desc
+            dom.data.innerHTML = up.towerStats() + ' ' + up.adj + ' -> ' + (up.towerStats() + up.add) + ' ' + up.adj
+            dom.div.onclick = () => {
+                up.func()
                 towerStats.gameOn = true
                 this.div.remove()
             }
