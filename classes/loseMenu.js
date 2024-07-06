@@ -50,13 +50,13 @@ export default class {
             title.innerHTML = e.name
             desc.innerHTML = e.desc
             data.innerHTML = e.gameStats() + ' ' + e.adj + ' -> ' + (e.gameStats() + e.add) + ' ' + e.adj
-            price.innerHTML = e.price + ' lvls'
+            price.innerHTML = e.price + ' points'
             div.onclick = () => {
                 if (this.points >= e.price) {
                     e.upgrade()
                     this.setPoints(-e.price)
                     e.price = e.price * e.price
-                    price.innerHTML = e.price + ' lvls'
+                    price.innerHTML = e.price + ' points'
                 }
             }
         })
