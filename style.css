@@ -77,6 +77,7 @@ body {
             margin: 1svw;
             display: flex;
             flex-direction: column;
+            gap: 1svh;
             backdrop-filter: blur(2px);
         }
     }

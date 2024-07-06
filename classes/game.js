@@ -12,6 +12,7 @@ export default class jeu {
         this.maxEnnemy = 100
         this.delay = 1000
         this.gameOn = true
+        this.numberOfGamesDone = 0
 
         // this.visibilityChange()
         this.startGame()
@@ -33,22 +34,32 @@ export default class jeu {
     spawnMob() {
         this.detectLose()
         if (Array.from(document.getElementsByClassName('ennemy')).length < this.maxEnnemy && towerStats.gameOn) {
-            towerStats.enemies.push(new basic({ pv: randomBetweenTwoInt(1, Math.floor(towerStats.time / 10)) }))
+            towerStats.enemies.push(new basic(
+                {
+                    pv: randomBetweenTwoInt(
+                        1 + Math.floor(this.numberOfGamesDone / 2),
+                        Math.floor(towerStats.time / 10) + Math.floor(this.numberOfGamesDone / 2)
+                    )
+                }))
             if (this.delay > 50) this.delay *= 0.9995
         }
         if (this.gameOn) setTimeout(() => { this.spawnMob() }, 100 + this.delay)
     }
     detectLose() {
-        if (towerStats.hp <= 0) { this.loseMenu.build(); this.gameOn = false }
+        if (towerStats.hp <= 0) {
+            this.loseMenu.build();
+            this.gameOn = false
+            this.numberOfGamesDone++
+        }
     }
-    
+
 
     visibilityChange() {
         document.onvisibilitychange = () => {
             if (document.visibilityState === "hidden") {
                 this.gameOn = false
                 towerStats.gameOn = false
-            }else{
+            } else {
                 this.gameOn = true
                 towerStats.gameOn = true
             }
