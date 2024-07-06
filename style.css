@@ -42,10 +42,12 @@ body {
         justify-content: center;
         align-items: center;
     }
+
     .basic {
         width: var(--basicSize);
         height: var(--basicSize)
     }
+
     .bullet {
         position: absolute;
         transform: translateX(-50%) translateY(-50%);
@@ -58,6 +60,7 @@ body {
             background-color: gray;
         }
     }
+
     #displayUpgradeChosingScreen {
         position: absolute;
         justify-self: center;
@@ -79,8 +82,16 @@ body {
             flex-direction: column;
             gap: 1svh;
             backdrop-filter: blur(2px);
+
+            &:hover {
+                background-color: rgba(211, 211, 211, 0.185);
+            }
+            .desc{
+                font-style: italic;
+            }
         }
     }
+
     #gameOverScreen {
         align-self: center;
         justify-self: center;
@@ -91,32 +102,72 @@ body {
         display: flex;
         flex-direction: column;
 
-        div{
+        div {
             display: flex;
             justify-content: center;
         }
 
         div:nth-child(1) {
-            flex: 1
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+
+            #points{
+                
+            }
         }
-        div:nth-child(2) {
+
+        #body {
             flex: 10;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1svw;
+
+            div {
+                position: relative;
+                width: 200px;
+                height: 300px;
+                border: solid gray 1px;
+                padding: 1svw;
+                display: flex;
+                justify-content: flex-start;
+                gap: 1svw;
+                flex-direction: column;
+
+                &:hover {
+                    background-color: rgba(211, 211, 211, 0.267);
+                }
+
+                .price{
+                    align-self: center;
+                    position: absolute;
+                    bottom: 0px;
+                }
+                .desc{
+                    font-style: italic;
+                }
+            }
         }
+
         div:nth-child(3) {
             flex: 1;
-            button{
+
+            button {
                 padding: 1svw 1svh;
                 font-size: 2svh;
                 border: solid gray 1px;
                 background-color: #D1FFBD;
 
-                &:hover{
+                &:hover {
                     background-color: #b4f798;
                 }
             }
         }
     }
+
 }
+
 .hide {
     display: none !important;
 }
@@ -151,18 +202,23 @@ body {
     0% {
         transform: rotate(0deg);
     }
+
     20% {
         transform: rotate(-10deg);
     }
+
     40% {
         transform: rotate(10deg);
     }
+
     60% {
         transform: rotate(-10deg);
     }
+
     80% {
         transform: rotate(10deg);
     }
+
     100% {
         transform: rotate(0deg);
     }
@@ -171,6 +227,7 @@ body {
 .shake {
     animation: shake 0.15s linear infinite;
 }
+
 /* xpBar */
 .circular-progress {
     --size: 250px;

@@ -1,15 +1,17 @@
 import towerStats from "./towerStats.js"
 import jeu from '../script.js'
+import upgrades from "./upgrades.js"
 
 export default class {
-    constructor() {}
-    build(){
+    constructor() {
+        this.points = 0
+    }
+    build() {
         this.div = document.createElement('div')
         document.body.appendChild(this.div)
         this.div.id = 'gameOverScreen'
         towerStats.stopTime()
-
-
+        
         this.buildHead()
         this.buildBody()
         this.buildFeet()
@@ -18,13 +20,46 @@ export default class {
         this.head = document.createElement('div')
         this.div.appendChild(this.head)
 
-        this.title = document.createElement('h2')
-        this.head.appendChild(this.title)
+        this.title = document.createElement('h1')
+        this.title.id = 'title'
         this.title.innerHTML = 'You lost'
+
+        this.pointsP = document.createElement('h2')
+        this.pointsP.id = 'points'
+        this.setPoints(towerStats.lvl)
+
+        this.head.append(this.title, this.pointsP)
     }
     buildBody() {
         this.body = document.createElement('div')
+        this.body.id = 'body'
         this.div.appendChild(this.body)
+
+        upgrades.forEach(e => {
+            let div = document.createElement('div')
+            this.body.appendChild(div)
+
+            let title = document.createElement('h3')
+            let desc = document.createElement('p')
+            desc.classList.add('desc')
+            let data = document.createElement('p')
+            data.classList.add('data')
+            let price = document.createElement('p')
+            price.classList.add('price')
+            div.append(title, desc, data, price)
+            title.innerHTML = e.name
+            desc.innerHTML = e.desc
+            data.innerHTML = e.gameStats() + ' ' + e.adj + ' -> ' + (e.gameStats() + e.add) + ' ' + e.adj
+            price.innerHTML = e.price + ' lvls'
+            div.onclick = () => {
+                if (this.points >= e.price) {
+                    e.upgrade()
+                    this.setPoints(-e.price)
+                    e.price = e.price * e.price
+                    price.innerHTML = e.price + 'lvls'
+                }
+            }
+        })
     }
     buildFeet() {
         this.feet = document.createElement('div')
@@ -36,5 +71,9 @@ export default class {
             this.div.remove()
             jeu.startGame()
         }
+    }
+    setPoints(arg) {
+        this.points += arg
+        this.pointsP.innerHTML = this.points + ' points'
     }
 }

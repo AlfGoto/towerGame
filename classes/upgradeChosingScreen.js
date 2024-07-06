@@ -23,6 +23,7 @@ class upgradeChosingScreen {
             dom.div.append(dom.title, dom.desc, dom.data)
             dom.title.innerHTML = up.name
             dom.desc.innerHTML = up.desc
+            dom.desc.classList.add('desc')
             dom.data.innerHTML = up.towerStats() + ' ' + up.adj + ' -> ' + (up.towerStats() + up.add) + ' ' + up.adj
             dom.div.onclick = () => {
                 up.func()
@@ -31,8 +32,6 @@ class upgradeChosingScreen {
             }
         }
     }
-    hide() { this.div.style.display = 'none' }
-    show() { this.div.style.display = 'flex' }
 }
 let UFC = new upgradeChosingScreen()
 export default UFC

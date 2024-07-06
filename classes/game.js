@@ -50,6 +50,7 @@ export default class jeu {
             this.loseMenu.build();
             this.gameOn = false
             this.numberOfGamesDone++
+            this.points += towerStats.lvl
         }
     }
 

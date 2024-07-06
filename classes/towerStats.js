@@ -32,7 +32,7 @@ export default {
     //XP
     xp: 0,
     maxXp: 5,
-    lvl: 1,
+    lvl: 100,
     addXp: function (arg) {
         if (this.xp + arg >= this.maxXp) {
             this.lvl++

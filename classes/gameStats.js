@@ -11,4 +11,5 @@ export default {
     eventail: 0,
     multishoot: 1,
     bulletChild: 0,
+    range: 1000,
 }
