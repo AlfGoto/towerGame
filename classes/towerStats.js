@@ -6,6 +6,7 @@ export default {
     time: 0,
     startTime: function(){this.timeInterval = setInterval(()=>{if(this.gameOn)this.time++},1000)},
     stopTime: function(){clearInterval(this.timeInterval)},
+    delayDiviser: 0.9990,
 
 
     //TOWER
@@ -66,6 +67,5 @@ export default {
     eventail: 1,
     multishoot: 1,
     bulletChild: 0,
-    delayDiviser: 0.9995,
 
 }

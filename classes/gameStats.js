@@ -12,5 +12,5 @@ export default {
     multishoot: 1,
     bulletChild: 0,
     range: 1000,
-    delayDiviser: 0.9995,
+    delayDiviser: 0.9990,
 }
