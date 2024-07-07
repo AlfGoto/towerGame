@@ -78,7 +78,7 @@ export default class basic {
         } else {
             this.div.remove()
             towerStats.enemies.splice(towerStats.enemies.indexOf(this), 1)
-            towerStats.dealDamage(1)
+            towerStats.dealDamage(Math.ceil(this.xp / 20))
             if (towerStats.closest == this) towerStats.closestDistance = 1500
         }
     }

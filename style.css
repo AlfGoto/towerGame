@@ -60,7 +60,7 @@ body {
         width: calc(1.4 * var(--basicSize));
         height: calc(1.4 * var(--basicSize));
     }
-    .Pinkboss{
+    .pinkboss{
         background-color: pink;
         width: calc(1.6 * var(--basicSize));
         height: calc(1.6 * var(--basicSize));
