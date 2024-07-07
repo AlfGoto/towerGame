@@ -1,5 +1,5 @@
 import towerStats from '../stats/towerStats.js'
-import upgrades from '../upgrades.js'
+import upgrades from '../ups/upgrades.js'
 import { shuffle } from '../tools/utils.js'
 
 class upgradeChosingScreen {

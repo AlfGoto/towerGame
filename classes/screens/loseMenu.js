@@ -1,6 +1,7 @@
 import towerStats from '../stats/towerStats.js'
 import jeu from '../../script.js'
-import upgrades from "../upgrades.js"
+import upgrades from "../ups/upgrades.js"
+import partyUpgrades from "../ups/partyUpgrade.js"
 
 export default class {
     constructor() {
@@ -35,7 +36,9 @@ export default class {
         this.body.id = 'body'
         this.div.appendChild(this.body)
 
-        upgrades.forEach(e => {
+        let ups = [...upgrades, ...partyUpgrades]
+
+        ups.forEach(e => {
             let div = document.createElement('div')
             this.body.appendChild(div)
 
@@ -55,7 +58,7 @@ export default class {
                 if (this.points >= e.price) {
                     e.upgrade()
                     this.setPoints(-e.price)
-                    e.price = e.price * e.price
+                    e.price = e.price * 4
                     price.innerHTML = e.price + ' points'
                     data.innerHTML = e.gameStats() + ' ' + e.adj + ' -> ' + (e.gameStats() + e.add) + ' ' + e.adj
                 }

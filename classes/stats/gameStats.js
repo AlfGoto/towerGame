@@ -5,6 +5,8 @@ export default {
     maxXp: 5,
     //UPGRADES
     greenZone: 0,
+    greenZoneRepeat: 1,
+    greenZoneXp: 1,
     damage: 1,
     shootingSpeed: 1,
     piercing: 0,

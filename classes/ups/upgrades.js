@@ -1,5 +1,5 @@
-import towerStats from "./stats/towerStats.js"
-import gameStats from "./stats/gameStats.js"
+import towerStats from "../stats/towerStats.js"
+import gameStats from "../stats/gameStats.js"
 
 const upgrades = [
     {
@@ -109,6 +109,18 @@ const upgrades = [
         towerStats: function(){return towerStats.range},
         gameStats: function(){return gameStats.range},
         add: 500,
+    },
+    {
+        name: "get GREENZONED",
+        func: function(){ towerStats.greenZoneRepeat += this.add },
+        desc: '"Your greenzone now deal damage one more time"',
+        upgrade: function(){ gameStats.greenZoneRepeat += this.add },
+        lvl: 1,
+        price: 10,
+        adj: 'greenzone ticks',
+        towerStats: function(){return towerStats.greenZoneRepeat},
+        gameStats: function(){return gameStats.greenZoneRepeat},
+        add: 1,
     },
 ]
 

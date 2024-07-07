@@ -60,6 +60,8 @@ export default {
 
     //UPGRADES
     greenZone: 0,
+    greenZoneRepeat: 1,
+    greenZoneXp: 1,
     damage: 1,
     shootingSpeed: 1,
     addGreenZoneDamage: function (arg) {
