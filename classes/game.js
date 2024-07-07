@@ -4,6 +4,7 @@ import towerStats from './stats/towerStats.js'
 import { randomBetweenTwoInt } from './tools/utils.js'
 import gameStats from './stats/gameStats.js'
 import loseMenu from './screens/loseMenu.js'
+import help from './screens/helpText.js'
 
 export default class jeu {
     constructor() {
@@ -17,6 +18,8 @@ export default class jeu {
 
         // this.visibilityChange()
         this.startGame()
+
+        setTimeout(()=>{document.getElementById('helpDiv').remove()}, 5000)
     }
     startGame() {
         while (towerStats.enemies.length > 0) { towerStats.enemies[0].kill() }

@@ -175,6 +175,15 @@ body {
             }
         }
     }
+    #helpDiv{
+        position: absolute;
+        top: 1svw;
+        left: 1svw;
+
+        p{
+            color: gray;
+        }
+    }
 
 }
 
