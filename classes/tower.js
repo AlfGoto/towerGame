@@ -1,6 +1,7 @@
 import towerStats from './stats/towerStats.js'
 import { bullet } from './bullet.js'
 import { angleToTarget } from './tools/utils.js'
+import x2 from './options/x2.js'
 
 export default class tower {
     constructor() {
@@ -44,6 +45,6 @@ export default class tower {
         towerStats.bullets = []
         setTimeout(() => {
             this.setTarget()
-        }, 2000 / towerStats.shootingSpeed)
+        }, (2000 / towerStats.shootingSpeed) / x2.speed)
     }
 }

@@ -1,5 +1,6 @@
 import { distanceToTarget, randomBetweenTwoInt } from './tools/utils.js'
 import towerStats from './stats/towerStats.js'
+import x2 from './options/x2.js'
 
 export class bullet {
     constructor(obj) {
@@ -62,7 +63,7 @@ export class bullet {
                 this.setPos()
             }
             this.travel()
-        }, 20)
+        }, 20 / x2.speed)
     }
     setPos() {
         this.div.style.left = this.left + 'px'

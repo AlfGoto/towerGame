@@ -1,11 +1,19 @@
+import x2 from "../options/x2.js"
 import upgradeChosingScreen from "../screens/upgradeChosingScreen.js"
 
 export default {
     //STATE OF THE GAME
     gameOn: true,
     time: 0,
-    startTime: function(){this.timeInterval = setInterval(()=>{if(this.gameOn)this.time++},1000)},
-    stopTime: function(){clearInterval(this.timeInterval)},
+    startTime: function () { this.timeLoop() },
+    timeLoop: function () {
+        if (this.gameOn) this.time++;
+        if (!this.stop) {
+            setTimeout(() => { this.timeLoop() }, 1000 / x2.speed)
+        } else this.stop = false
+    },
+    stopTime: function () { this.stopTime = true },
+    stop: false,
     delayDiviser: 0.9990,
 
 
@@ -39,11 +47,11 @@ export default {
             this.lvl++
             this.xp = this.xp + arg - this.maxXp
             this.maxXp = Math.round(this.maxXp * 1.5)
-            if(this.gameOn)upgradeChosingScreen.display()
+            if (this.gameOn) upgradeChosingScreen.display()
         } else { this.xp = this.xp + arg }
         document.documentElement.style.setProperty('--progress', Math.round((this.xp / this.maxXp) * 100));
     },
-    resetXp: function(){
+    resetXp: function () {
         this.xp = 0
         this.lvl = 1
         document.documentElement.style.setProperty('--progress', Math.round((this.xp / this.maxXp) * 100));
@@ -54,11 +62,11 @@ export default {
     greenZone: 0,
     damage: 1,
     shootingSpeed: 1,
-    addGreenZoneDamage: function(arg){
-        if(this.greenZone == 0)document.documentElement.style.setProperty('--greenZoneColor',  '#a6ff80');
+    addGreenZoneDamage: function (arg) {
+        if (this.greenZone == 0) document.documentElement.style.setProperty('--greenZoneColor', '#a6ff80');
         this.greenZone += arg
     },
-    addHp: function(arg){
+    addHp: function (arg) {
         this.hp += arg
         this.maxHp += arg
         document.getElementById('hpP').innerHTML = this.hp

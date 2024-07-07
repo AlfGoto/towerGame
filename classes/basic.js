@@ -1,5 +1,7 @@
 import { randomBetweenTwoInt, distanceToPlayer, angleToPlayer } from "./tools/utils.js"
 import towerStats from "./stats/towerStats.js"
+import x2 from "./options/x2.js"
+
 
 export default class basic {
     constructor(obj) {
@@ -45,14 +47,14 @@ export default class basic {
         this.move(angleToPlayer(this.left, this.top))
     }
     move(angle) {
-        if (!towerStats.gameOn) { setTimeout(() => { this.move(angle) }, this.speed); return }
+        if (!towerStats.gameOn) { setTimeout(() => { this.move(angle) }, this.speed / x2.speed); return }
         if (this.pv <= 0) { return }
         let distance = distanceToPlayer(this.left, this.top)
 
         if(this.canBeGreenZoned && towerStats.greenZone > 0 && distance > 160 && distance < 170){
             this.dealDamage(towerStats.greenZone)
             this.canBeGreenZoned = false
-            setTimeout(() => { this.move(angle) }, this.speed)
+            setTimeout(() => { this.move(angle) }, this.speed / x2.speed)
             return
         }
 
@@ -70,7 +72,7 @@ export default class basic {
             }
 
 
-            setTimeout(() => { this.move(angle) }, this.speed)
+            setTimeout(() => { this.move(angle) }, this.speed / x2.speed)
         } else {
             this.div.remove()
             towerStats.enemies.splice(towerStats.enemies.indexOf(this), 1)
