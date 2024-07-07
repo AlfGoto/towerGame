@@ -19,6 +19,8 @@ export class bullet {
         document.body.appendChild(this.div)
         this.setPos()
 
+        this.foeArray = Array.from(document.getElementsByClassName('ennemy'))
+
         this.alive = true
         this.travel()
         setTimeout(() => { this.div.remove(); this.alive = false; towerStats.bullets = [] }, towerStats.range)
@@ -27,11 +29,12 @@ export class bullet {
     }
     travel() {
         if (!this.alive) return
-        for (const foe of towerStats.enemies) {
-            if (distanceToTarget(this.left, this.top, foe.left, foe.top) < 21) {
+        for (let foe of this.foeArray) {
+            foe = foe.object
+            if (distanceToTarget(this.left, this.top, foe.left, foe.top) < 30 ) {
                 if (this.alreadyTouched.includes(foe)) continue
 
-                foe.dealDamage(towerStats.damage)
+                foe.dealDamage(towerStats.damage, false)
 
                 if (!this.child) {
                     let childrenLeft = towerStats.bulletChild

@@ -44,6 +44,8 @@ export default class basic {
         this.div.classList.add('ennemy')
         this.setPos()
 
+        this.div.object = this
+
         this.move(angleToPlayer(this.left, this.top))
     }
     move(angle) {
@@ -53,6 +55,7 @@ export default class basic {
 
         if (this.canBeGreenZoned && towerStats.greenZone > 0 && distance > 160 && distance < 170) {
             this.greenZoneDamage()
+            this.canBeGreenZoned = false
             setTimeout(() => { this.move(angle) }, this.speed / x2.speed)
             return
         }
@@ -105,7 +108,6 @@ export default class basic {
     }
     greenZoneDamage(nbLeft = towerStats.greenZoneRepeat) {
         this.dealDamage(towerStats.greenZone, true)
-        this.canBeGreenZoned = false
         nbLeft--
         if (nbLeft > 0) setTimeout(() => { this.greenZoneDamage(nbLeft) }, 200 / x2.speed)
     }

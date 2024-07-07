@@ -110,8 +110,8 @@ body {
         align-self: center;
         justify-self: center;
         position: absolute;
-        width: 85%;
-        height: 85%;
+        width: 90%;
+        height: 95%;
         backdrop-filter: blur(5px);
         display: flex;
         flex-direction: column;
@@ -139,16 +139,16 @@ body {
             div {
                 position: relative;
                 width: 210px;
-                height: 16svw;
+                height: 18svw;
                 min-width: 150px;
-                max-width: 10svw;
+                max-width: 11svw;
                 border: solid gray 1px;
                 padding: 1svw;
                 display: flex;
                 justify-content: flex-start;
                 gap: 1svw;
                 flex-direction: column;
-                font-size: .9svw;
+                font-size: 1.1svw;
 
                 &.partyUpgrade {
                     border: black 2px solid;
