@@ -42,6 +42,8 @@ export default class {
             let div = document.createElement('div')
             this.body.appendChild(div)
 
+            if(e.func == null)div.classList.add('partyUpgrade')
+
             let title = document.createElement('h3')
             let desc = document.createElement('p')
             desc.classList.add('desc')

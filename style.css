@@ -145,6 +145,10 @@ body {
                 gap: 1svw;
                 flex-direction: column;
 
+                &.partyUpgrade{
+                    border: black 2px solid;
+                }
+
                 &:hover {
                     background-color: rgba(211, 211, 211, 0.267);
                 }
