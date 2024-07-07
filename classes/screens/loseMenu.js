@@ -54,7 +54,7 @@ export default class {
             div.append(title, desc, data, price)
             title.innerHTML = e.name
             desc.innerHTML = e.desc
-            data.innerHTML = e.gameStats() + ' ' + e.adj + ' -> ' + (e.gameStats() + e.add) + ' ' + e.adj
+            data.innerHTML = e.gameStats() + ' ' + e.adj + ' → ' + (e.gameStats() + e.add) + ' ' + e.adj
             price.innerHTML = e.price + ' points'
             div.onclick = () => {
                 if (this.points >= e.price) {
@@ -62,7 +62,7 @@ export default class {
                     this.setPoints(-e.price)
                     e.price = e.price * 4
                     price.innerHTML = e.price + ' points'
-                    data.innerHTML = e.gameStats() + ' ' + e.adj + ' -> ' + (e.gameStats() + e.add) + ' ' + e.adj
+                    data.innerHTML = e.gameStats() + ' ' + e.adj + ' → ' + (e.gameStats() + e.add) + ' ' + e.adj
                 }
             }
         })

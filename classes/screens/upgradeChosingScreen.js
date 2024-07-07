@@ -24,7 +24,7 @@ class upgradeChosingScreen {
             dom.title.innerHTML = up.name
             dom.desc.innerHTML = up.desc
             dom.desc.classList.add('desc')
-            dom.data.innerHTML = up.towerStats() + ' ' + up.adj + ' -> ' + (up.towerStats() + up.add) + ' ' + up.adj
+            dom.data.innerHTML = up.towerStats() + ' ' + up.adj + ' → ' + (up.towerStats() + up.add) + ' ' + up.adj
             dom.div.onclick = () => {
                 up.func()
                 towerStats.gameOn = true

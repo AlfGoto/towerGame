@@ -12,7 +12,7 @@ export default {
             setTimeout(() => { this.timeLoop() }, 1000 / x2.speed)
         } else this.stop = false
     }, 
-    stopTime: function () { this.stopTime = true },
+    stopTime: function () { this.stop = true },
     stop: false,
     delayDiviser: 0.9990,
 

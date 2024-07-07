@@ -219,19 +219,19 @@ body {
             font-size: 1.2svw !important;
         }
     }
-}
-@media only screen and (max-width: 800px) {
-    #body {
-        div {
-            font-size: 1.5svw !important;
-        }
-    }
     #displayUpgradeChosingScreen {
         flex-direction: column;
         height: 60% !important;
         align-self: center;
         div{
             width: 100%;
+        }
+    }
+}
+@media only screen and (max-width: 800px) {
+    #body {
+        div {
+            font-size: 1.5svw !important;
         }
     }
 }
