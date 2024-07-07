@@ -19,10 +19,10 @@ export default class jeu {
         // this.visibilityChange()
         this.startGame()
 
-        setTimeout(()=>{document.getElementById('helpDiv').remove()}, 5000)
+        setTimeout(() => { document.getElementById('helpDiv').remove() }, 5000)
     }
     startGame() {
-        while (towerStats.enemies.length > 0) { towerStats.enemies[0].kill() }
+        while (Array.from(document.getElementsByClassName('ennemy')).length > 0) { Array.from(document.getElementsByClassName('ennemy'))[0].object.kill() }
         for (const [key, value] of Object.entries(gameStats)) { towerStats[key] = value }
         towerStats.hp = towerStats.maxHp
         document.getElementById('hpP').innerHTML = towerStats.hp
@@ -44,16 +44,16 @@ export default class jeu {
         if (this.gameOn) setTimeout(() => { this.spawnMob() }, 100 + this.delay)
     }
     chooseMobToSpawn() {
-        if(Math.floor(towerStats.time / 60) > this.lastBossSpawnedTime){
+        if (Math.floor(towerStats.time / 60) > this.lastBossSpawnedTime) {
             this.lastBossSpawnedTime++
             this.mob('boss', 10)
-        }else if (randomBetweenTwoInt(1, 10) <= Math.round(towerStats.time / 60)) {
+        } else if (randomBetweenTwoInt(1, 10) <= Math.round(towerStats.time / 60)) {
             this.mob('miniBoss', 4)
         } else {
             this.mob()
         }
     }
-    mob(className = null, mult = 1){
+    mob(className = null, mult = 1) {
         towerStats.enemies.push(new basic(
             {
                 pv: mult * randomBetweenTwoInt(
