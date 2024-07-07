@@ -48,12 +48,14 @@ body {
         width: var(--basicSize);
         height: var(--basicSize);
     }
-    .miniBoss{
+
+    .miniBoss {
         background-color: lightskyblue;
         width: calc(1.25 * var(--basicSize));
         height: calc(1.25 * var(--basicSize));
     }
-    .boss{
+
+    .boss {
         background-color: lightgreen;
         width: calc(1.4 * var(--basicSize));
         height: calc(1.4 * var(--basicSize));
@@ -136,16 +138,19 @@ body {
 
             div {
                 position: relative;
-                width: 200px;
-                height: 300px;
+                width: 210px;
+                height: 16svw;
+                min-width: 150px;
+                max-width: 10svw;
                 border: solid gray 1px;
                 padding: 1svw;
                 display: flex;
                 justify-content: flex-start;
                 gap: 1svw;
                 flex-direction: column;
+                font-size: .9svw;
 
-                &.partyUpgrade{
+                &.partyUpgrade {
                     border: black 2px solid;
                 }
 
@@ -180,12 +185,13 @@ body {
             }
         }
     }
-    #helpDiv{
+
+    #helpDiv {
         position: absolute;
         top: 1svw;
         left: 1svw;
 
-        p{
+        p {
             color: gray;
         }
     }
@@ -203,6 +209,39 @@ body {
     position: absolute;
     z-index: 10;
     font-size: 40px;
+}
+
+
+
+@media only screen and (max-width: 1000px) {
+    #body {
+        div {
+            font-size: 1.2svw !important;
+        }
+    }
+}
+@media only screen and (max-width: 800px) {
+    #body {
+        div {
+            font-size: 1.5svw !important;
+        }
+    }
+    #displayUpgradeChosingScreen {
+        flex-direction: column;
+        height: 60% !important;
+        align-self: center;
+        div{
+            width: 100%;
+        }
+    }
+}
+@media only screen and (max-width: 600px) {
+    #body {
+        div {
+            height: 25svw !important;
+            font-size:2svw !important;
+        }
+    }
 }
 
 
