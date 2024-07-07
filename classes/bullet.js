@@ -1,5 +1,5 @@
-import { distanceToTarget, randomBetweenTwoInt } from './utils.js'
-import towerStats from './towerStats.js'
+import { distanceToTarget, randomBetweenTwoInt } from './tools/utils.js'
+import towerStats from './stats/towerStats.js'
 
 export class bullet {
     constructor(obj) {

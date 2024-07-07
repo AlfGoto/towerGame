@@ -1,4 +1,4 @@
-import upgradeChosingScreen from "./upgradeChosingScreen.js"
+import upgradeChosingScreen from "../screens/upgradeChosingScreen.js"
 
 export default {
     //STATE OF THE GAME

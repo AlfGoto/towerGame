@@ -1,6 +1,6 @@
-import towerStats from './towerStats.js'
+import towerStats from './stats/towerStats.js'
 import { bullet } from './bullet.js'
-import { angleToTarget } from './utils.js'
+import { angleToTarget } from './tools/utils.js'
 
 export default class tower {
     constructor() {

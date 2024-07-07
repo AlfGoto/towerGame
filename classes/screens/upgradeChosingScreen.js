@@ -1,6 +1,6 @@
-import towerStats from './towerStats.js'
-import upgrades from './upgrades.js'
-import { shuffle } from './utils.js'
+import towerStats from '../stats/towerStats.js'
+import upgrades from '../upgrades.js'
+import { shuffle } from '../tools/utils.js'
 
 class upgradeChosingScreen {
     constructor() {

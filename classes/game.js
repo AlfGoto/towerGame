@@ -1,9 +1,9 @@
 import TowerBuilder from './tower.js'
 import basic from './basic.js'
-import towerStats from './towerStats.js'
-import { randomBetweenTwoInt } from './utils.js'
-import gameStats from './gameStats.js'
-import loseMenu from './loseMenu.js'
+import towerStats from './stats/towerStats.js'
+import { randomBetweenTwoInt } from './tools/utils.js'
+import gameStats from './stats/gameStats.js'
+import loseMenu from './screens/loseMenu.js'
 
 export default class jeu {
     constructor() {
@@ -37,7 +37,7 @@ export default class jeu {
             towerStats.enemies.push(new basic(
                 {
                     pv: randomBetweenTwoInt(
-                        1 + Math.floor(towerStats.time / 20) + Math.floor(this.numberOfGamesDone / 2),
+                        1 + Math.floor(towerStats.time / 15) + Math.floor(this.numberOfGamesDone / 2),
                         Math.floor(towerStats.time / 5) + Math.floor(this.numberOfGamesDone / 2)
                     )
                 }))

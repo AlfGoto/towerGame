@@ -1,6 +1,6 @@
-import towerStats from "./towerStats.js"
-import jeu from '../script.js'
-import upgrades from "./upgrades.js"
+import towerStats from '../stats/towerStats.js'
+import jeu from '../../script.js'
+import upgrades from "../upgrades.js"
 
 export default class {
     constructor() {
@@ -57,6 +57,7 @@ export default class {
                     this.setPoints(-e.price)
                     e.price = e.price * e.price
                     price.innerHTML = e.price + ' points'
+                    data.innerHTML = e.gameStats() + ' ' + e.adj + ' -> ' + (e.gameStats() + e.add) + ' ' + e.adj
                 }
             }
         })

@@ -1,4 +1,4 @@
-import towerStats from "./towerStats.js"
+import towerStats from "../stats/towerStats.js"
 
 export default class {
     constructor() {

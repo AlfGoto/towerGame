@@ -1,5 +1,5 @@
-import { randomBetweenTwoInt, distanceToPlayer, angleToPlayer } from "./utils.js"
-import towerStats from './towerStats.js'
+import { randomBetweenTwoInt, distanceToPlayer, angleToPlayer } from "./tools/utils.js"
+import towerStats from "./stats/towerStats.js"
 
 export default class basic {
     constructor(obj) {

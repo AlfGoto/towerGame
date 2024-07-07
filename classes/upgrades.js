@@ -1,5 +1,5 @@
-import towerStats from "./towerStats.js"
-import gameStats from "./gameStats.js"
+import towerStats from "./stats/towerStats.js"
+import gameStats from "./stats/gameStats.js"
 
 const upgrades = [
     {
@@ -32,7 +32,7 @@ const upgrades = [
         desc: '"Shoot FASTER (i mean, everything is in the title)"',
         upgrade: function(){ gameStats.shootingSpeed += this.add },
         lvl: 1,
-        price: 5,
+        price: 6,
         adj: 'shooting speed',
         towerStats: function(){return towerStats.shootingSpeed},
         gameStats: function(){return gameStats.shootingSpeed},
@@ -68,7 +68,7 @@ const upgrades = [
         desc: '"Add one bullet to the side"',
         upgrade: function(){ gameStats.eventail += this.add },
         lvl: 1,
-        price: 5,
+        price: 6,
         adj: 'bullets',
         towerStats: function(){return towerStats.eventail},
         gameStats: function(){return gameStats.eventail},
@@ -80,7 +80,7 @@ const upgrades = [
         desc: '"Shoot one more bullet each times"',
         upgrade: function(){ gameStats.multishoot += this.add },
         lvl: 1,
-        price: 10,
+        price: 8,
         adj: 'bullets',
         towerStats: function(){return towerStats.multishoot},
         gameStats: function(){return gameStats.multishoot},
