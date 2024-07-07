@@ -13,6 +13,7 @@ export default class jeu {
         this.delay = 1000
         this.gameOn = true
         this.numberOfGamesDone = 0
+        this.lastBossSpawnedTime = 1
 
         // this.visibilityChange()
         this.startGame()
@@ -34,17 +35,38 @@ export default class jeu {
     spawnMob() {
         this.detectLose()
         if (Array.from(document.getElementsByClassName('ennemy')).length < this.maxEnnemy && towerStats.gameOn) {
-            towerStats.enemies.push(new basic(
-                {
-                    pv: randomBetweenTwoInt(
-                        1 + Math.floor(towerStats.time / 15) + Math.floor(this.numberOfGamesDone / 2),
-                        Math.floor(towerStats.time / 5) + Math.floor(this.numberOfGamesDone / 2)
-                    )
-                }))
+            this.chooseMobToSpawn()
             if (this.delay > 50) this.delay *= gameStats.delayDiviser
         }
         if (this.gameOn) setTimeout(() => { this.spawnMob() }, 100 + this.delay)
     }
+    chooseMobToSpawn() {
+        if(Math.floor(towerStats.time / 60) > this.lastBossSpawnedTime){
+            this.lastBossSpawnedTime++
+            this.mob('boss', 10)
+        }else if (randomBetweenTwoInt(1, 10) <= Math.round(towerStats.time / 60)) {
+            this.mob('miniBoss', 4)
+        } else {
+            this.mob()
+        }
+    }
+    mob(className = null, mult = 1){
+        towerStats.enemies.push(new basic(
+            {
+                pv: mult * randomBetweenTwoInt(
+                    1 + Math.floor(towerStats.time / 15) + Math.floor(this.numberOfGamesDone / 2),
+                    Math.floor(towerStats.time / 5) + Math.floor(this.numberOfGamesDone / 2)
+                ),
+                class: className || null
+            }
+        ))
+    }
+
+
+
+
+
+
     detectLose() {
         if (towerStats.hp <= 0) {
             this.loseMenu.build();

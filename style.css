@@ -45,7 +45,17 @@ body {
 
     .basic {
         width: var(--basicSize);
-        height: var(--basicSize)
+        height: var(--basicSize);
+    }
+    .miniBoss{
+        background-color: lightskyblue;
+        width: calc(1.25 * var(--basicSize));
+        height: calc(1.25 * var(--basicSize));
+    }
+    .boss{
+        background-color: lightgreen;
+        width: calc(1.4 * var(--basicSize));
+        height: calc(1.4 * var(--basicSize));
     }
 
     .bullet {

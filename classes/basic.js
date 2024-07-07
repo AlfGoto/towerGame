@@ -11,6 +11,7 @@ export default class basic {
         this.shooter = obj.shooter || false
         this.size = obj.size || 25
         this.xp = obj.xp || Math.ceil(this.pv/5)
+        this.class = obj.class || undefined
 
         document.documentElement.style.setProperty('--' + this.constructor.name + 'Size', this.size + 'px');
         this.canBeGreenZoned = true
@@ -35,8 +36,9 @@ export default class basic {
         this.top = top
         this.left = left
         this.div = document.createElement('div')
+        if(this.color)this.div.style.backgroundColor = this.color
         document.body.appendChild(this.div)
-        this.div.classList.add(this.constructor.name)
+        this.div.classList.add(this.class || this.constructor.name)
         this.div.classList.add('ennemy')
         this.setPos()
 
