@@ -139,8 +139,9 @@ body {
             div {
                 position: relative;
                 width: 210px;
-                height: 18svw;
-                min-width: 150px;
+                /* height: 18svw; */
+                min-height: min-content;
+                min-width: min-content;
                 max-width: 11svw;
                 border: solid gray 1px;
                 padding: 1svw;
@@ -215,7 +216,12 @@ body {
 
 @media only screen and (max-width: 1000px) {
     #body {
+        flex-direction: column !important;
         div {
+            align-items: flex-start !important;
+            justify-self: center !important;
+            align-self: center !important;
+            min-width: 50svw !important;
             font-size: 1.2svw !important;
         }
     }
