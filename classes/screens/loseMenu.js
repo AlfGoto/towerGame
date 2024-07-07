@@ -27,11 +27,12 @@ export default class {
 
         this.pointsP = document.createElement('h2')
         this.pointsP.id = 'points'
-        this.setPoints(towerStats.lvl)
+        this.setPoints()
 
         this.head.append(this.title, this.pointsP)
     }
     buildBody() {
+        this.setPoints(towerStats.lvl)
         this.body = document.createElement('div')
         this.body.id = 'body'
         this.div.appendChild(this.body)
@@ -40,6 +41,7 @@ export default class {
 
         ups.forEach(e => {
             let div = document.createElement('div')
+            div.object = e
             this.body.appendChild(div)
 
             if(e.func == null)div.classList.add('partyUpgrade')
@@ -63,8 +65,14 @@ export default class {
                     e.price = e.price * 4
                     price.innerHTML = e.price + ' points'
                     data.innerHTML = e.gameStats() + ' ' + e.adj + ' → ' + (e.gameStats() + e.add) + ' ' + e.adj
+
+
+                    Array.from(document.getElementsByClassName('dispo')).forEach(d=>{
+                        if(d.object.price > this.points)d.classList.remove ('dispo')
+                    })
                 }
             }
+            if(this.points >= e.price)div.classList.add('dispo')
         })
     }
     buildFeet() {
@@ -78,7 +86,7 @@ export default class {
             jeu.startGame()
         }
     }
-    setPoints(arg) {
+    setPoints(arg = 0) {
         this.points += arg
         this.pointsP.innerHTML = this.points + ' points'
     }

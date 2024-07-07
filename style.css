@@ -60,6 +60,11 @@ body {
         width: calc(1.4 * var(--basicSize));
         height: calc(1.4 * var(--basicSize));
     }
+    .Pinkboss{
+        background-color: pink;
+        width: calc(1.6 * var(--basicSize));
+        height: calc(1.6 * var(--basicSize));
+    }
 
     .bullet {
         position: absolute;
@@ -153,6 +158,10 @@ body {
 
                 &.partyUpgrade {
                     border: black 2px solid;
+                }
+                &.dispo{
+                    border-color: #53c721;
+                    border-width: 2px;
                 }
 
                 &:hover {

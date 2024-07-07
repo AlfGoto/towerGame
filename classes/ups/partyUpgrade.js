@@ -7,7 +7,7 @@ const upgrades = [
         desc: '"Your greenzone now give more xp"',
         upgrade: function(){ gameStats.greenZoneXp += this.add },
         lvl: 1,
-        price: 10,
+        price: 8,
         adj: 'xp multiplier',
         gameStats: function(){return gameStats.greenZoneXp},
         add: 1,
