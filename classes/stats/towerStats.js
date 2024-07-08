@@ -28,7 +28,7 @@ export default {
         document.getElementById('hpP').innerHTML = this.hp
     },
     bullets: [],
-    range: 1000,
+    range: 500,
 
 
     //ENEMIES

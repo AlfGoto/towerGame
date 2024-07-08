@@ -104,11 +104,11 @@ const upgrades = [
         desc: '"Your bullets now go further"',
         upgrade: function(){ gameStats.range += this.add },
         lvl: 1,
-        price: 20,
+        price: 15,
         adj: 'range',
         towerStats: function(){return towerStats.range},
         gameStats: function(){return gameStats.range},
-        add: 500,
+        add: 250,
     },
     {
         name: "get GREENZONED",

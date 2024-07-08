@@ -13,6 +13,6 @@ export default {
     eventail: 1,
     multishoot: 1,
     bulletChild: 0,
-    range: 1000,
+    range: 500,
     delayDiviser: 0.9990,
 }

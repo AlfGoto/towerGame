@@ -54,7 +54,6 @@ body {
         width: calc(1.25 * var(--basicSize));
         height: calc(1.25 * var(--basicSize));
     }
-
     .boss {
         background-color: lightgreen;
         width: calc(1.4 * var(--basicSize));
@@ -64,6 +63,11 @@ body {
         background-color: pink;
         width: calc(1.6 * var(--basicSize));
         height: calc(1.6 * var(--basicSize));
+    }
+    .yellowboss{
+        background-color: rgb(255, 255, 18);
+        width: calc(1.8 * var(--basicSize));
+        height: calc(1.8 * var(--basicSize));
     }
 
     .bullet {
