@@ -45,13 +45,13 @@ export default class jeu {
     }
     chooseMobToSpawn() {
         if (Math.floor(towerStats.time / 60) > this.lastBossSpawnedTime) {
-            if (towerStats.time > 300) {
+            if (towerStats.time > 200) {
                 this.mob('pinkboss', 30)
             } else {
                 this.mob('boss', 10)
             }
             this.lastBossSpawnedTime++
-        } else if (randomBetweenTwoInt(1, 10) <= Math.round((towerStats.time - 300) / 60)) {
+        } else if (randomBetweenTwoInt(1, 10) <= Math.round((towerStats.time - 200) / 60)) {
             this.mob('boss', 10)
         } else if (randomBetweenTwoInt(1, 10) <= Math.round(towerStats.time / 60)) {
             this.mob('miniBoss', 4)

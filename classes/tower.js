@@ -29,7 +29,7 @@ export default class tower {
             if (towerStats.eventail > 0) {
                 let iteration = 0
                 let iterationLeft = towerStats.eventail - 1
-                let gap = 1
+                let gap = 1.5
 
                 //iteration
                 while (iterationLeft > 0) {
