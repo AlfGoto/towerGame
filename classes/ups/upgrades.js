@@ -104,7 +104,7 @@ const upgrades = [
         desc: '"Your bullets now go further"',
         upgrade: function(){ gameStats.range += this.add },
         lvl: 1,
-        price: 15,
+        price: 5,
         adj: 'range',
         towerStats: function(){return towerStats.range},
         gameStats: function(){return gameStats.range},
