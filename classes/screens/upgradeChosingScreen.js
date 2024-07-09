@@ -5,11 +5,16 @@ import { shuffle } from '../tools/utils.js'
 class upgradeChosingScreen {
     constructor() {
         this.displayed = false
-        this.upgrades = [
-            { div: document.createElement('div'), title: document.createElement('h2'), desc: document.createElement('p'), data: document.createElement('p') },
-            { div: document.createElement('div'), title: document.createElement('h2'), desc: document.createElement('p'), data: document.createElement('p') },
-            { div: document.createElement('div'), title: document.createElement('h2'), desc: document.createElement('p'), data: document.createElement('p') }
-        ]
+        this.upgrades = []
+        for(let i = 0; i < 3; i++){
+            this.upgrades.push({
+                div: document.createElement('div'), 
+                title: document.createElement('h2'), 
+                desc: document.createElement('p'), 
+                data: document.createElement('p'),
+                malus: document.createElement('p')
+            })
+        }
     }
     display() {
         this.displayed = true
@@ -22,16 +27,16 @@ class upgradeChosingScreen {
             let dom = this.upgrades[i]
             let up = upgrades[i]
             this.div.appendChild(dom.div)
-            dom.div.append(dom.title, dom.desc, dom.data)
+            dom.div.append(dom.title, dom.desc, dom.data, dom.malus)
             dom.title.innerHTML = up.name
             dom.desc.innerHTML = up.desc
             dom.desc.classList.add('desc')
             dom.data.innerHTML = up.towerStats() + ' ' + up.adj + ' → ' + (up.towerStats() + up.add) + ' ' + up.adj
+            dom.malus.classList.add('malus')
             if (up.malus) {
-                let malus = document.createElement('p')
-                dom.div.append(malus)
-                malus.classList.add('malus')
-                malus.innerHTML = up.malus.gameStats() + ' ' + up.malus.adj + ' → ' + (up.malus.gameStats() + up.malus.add) + ' ' + up.malus.adj
+                dom.malus.innerHTML = up.malus.gameStats() + ' ' + up.malus.adj + ' → ' + (up.malus.gameStats() + up.malus.add) + ' ' + up.malus.adj
+            }else{
+                dom.malus.innerHTML = ''
             }
 
 

@@ -33,6 +33,7 @@ export default class {
     }
     buildBody() {
         // this.setPoints(100)
+        this.body = null
         this.body = document.createElement('div')
         this.body.id = 'body'
         this.div.appendChild(this.body)

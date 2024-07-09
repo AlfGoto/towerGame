@@ -93,6 +93,14 @@ const upgrades = [
         towerStats: function(){return towerStats.multishoot},
         gameStats: function(){return gameStats.multishoot},
         add: 1,
+        malus:{
+            adj: 'shooting speed',
+            add: -0.5,
+            func: function(){ towerStats.shootingSpeed += this.add },
+            upgrade: function(){ gameStats.shootingSpeed += this.add },
+            towerStats: function(){return towerStats.shootingSpeed},
+            gameStats: function(){return gameStats.shootingSpeed},
+        },
     },
     {
         name: "Bullet is PREGNANT ???",
