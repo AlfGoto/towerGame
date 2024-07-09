@@ -4,6 +4,7 @@ import towerStats from './stats/towerStats.js'
 import { randomBetweenTwoInt } from './tools/utils.js'
 import gameStats from './stats/gameStats.js'
 import loseMenu from './screens/loseMenu.js'
+import pause from './screens/pause.js'
 import help from './screens/helpText.js'
 
 export default class jeu {
@@ -16,7 +17,7 @@ export default class jeu {
         this.numberOfGamesDone = 0
         this.lastBossSpawnedTime = 1
 
-        // this.visibilityChange()
+        this.visibilityChange()
         this.startGame()
 
         setTimeout(() => { document.getElementById('helpDiv').remove() }, 5000)
@@ -100,11 +101,7 @@ export default class jeu {
     visibilityChange() {
         document.onvisibilitychange = () => {
             if (document.visibilityState === "hidden") {
-                this.gameOn = false
-                towerStats.gameOn = false
-            } else {
-                this.gameOn = true
-                towerStats.gameOn = true
+                pause.on()
             }
         };
     }

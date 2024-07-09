@@ -17,6 +17,12 @@ class pauseClass {
         }
         this.displayed = !this.displayed
     }
+    on(){
+        if (!game.gameOn || upgradeChosingScreen.displayed) return
+        this.displayed = true
+        towerStats.gameOn = false
+        this.create()
+    }
     create(){
         this.div = document.createElement('div')
         this.div.id = 'pauseScreen'
