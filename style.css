@@ -66,6 +66,11 @@ body {
     }
     .yellowboss{
         background-color: rgb(255, 255, 18);
+        width: calc(1.7 * var(--basicSize));
+        height: calc(1.7 * var(--basicSize));
+    }
+    .lightBlueboss{
+        background-color: lightblue;
         width: calc(1.8 * var(--basicSize));
         height: calc(1.8 * var(--basicSize));
     }
@@ -208,6 +213,9 @@ body {
         p {
             color: gray;
         }
+    }
+    #pauseScreen{
+        position: absolute;
     }
 
 }

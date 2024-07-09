@@ -4,6 +4,7 @@ import { shuffle } from '../tools/utils.js'
 
 class upgradeChosingScreen {
     constructor() {
+        this.displayed = false
         this.upgrades = [
             { div: document.createElement('div'), title: document.createElement('h2'), desc: document.createElement('p'), data: document.createElement('p') },
             { div: document.createElement('div'), title: document.createElement('h2'), desc: document.createElement('p'), data: document.createElement('p') },
@@ -11,6 +12,7 @@ class upgradeChosingScreen {
         ]
     }
     display() {
+        this.displayed = true
         towerStats.gameOn = false
         this.div = document.createElement('div')
         document.body.appendChild(this.div)
@@ -29,6 +31,7 @@ class upgradeChosingScreen {
                 up.func()
                 towerStats.gameOn = true
                 this.div.remove()
+                this.displayed = false
             }
         }
     }
