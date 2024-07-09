@@ -46,17 +46,19 @@ export default class basic {
 
         this.div.object = this
 
-        this.move(angleToPlayer(this.left, this.top))
+        this.angle = angleToPlayer(this.left, this.top)
+        this.move()
+        window.addEventListener('resize', () => { this.angle = angleToPlayer(this.left, this.top) })
     }
-    move(angle) {
-        if (!towerStats.gameOn) { setTimeout(() => { this.move(angle) }, this.speed / x2.speed); return }
+    move() {
+        if (!towerStats.gameOn) { setTimeout(() => { this.move() }, this.speed / x2.speed); return }
         if (this.pv <= 0) { return }
         let distance = distanceToPlayer(this.left, this.top)
 
         if (this.canBeGreenZoned && towerStats.greenZone > 0 && distance > 160 && distance < 170) {
             this.greenZoneDamage()
             this.canBeGreenZoned = false
-            setTimeout(() => { this.move(angle) }, this.speed / x2.speed)
+            setTimeout(() => { this.move() }, this.speed / x2.speed)
             return
         }
 
@@ -64,8 +66,8 @@ export default class basic {
 
 
         if (distanceToPlayer(this.left, this.top) > this.toStopWalking) {
-            this.left = this.left + (angle.left / 100)
-            this.top = this.top + (angle.top / 100)
+            this.left = this.left + (this.angle.left / 100)
+            this.top = this.top + (this.angle.top / 100)
             this.setPos()
 
             if (!towerStats.closest || distance < towerStats.closestDistance) {
@@ -74,7 +76,7 @@ export default class basic {
             }
 
 
-            setTimeout(() => { this.move(angle) }, this.speed / x2.speed)
+            setTimeout(() => { this.move() }, this.speed / x2.speed)
         } else {
             this.div.remove()
             towerStats.enemies.splice(towerStats.enemies.indexOf(this), 1)
@@ -109,6 +111,6 @@ export default class basic {
     greenZoneDamage(nbLeft = towerStats.greenZoneRepeat) {
         this.dealDamage(towerStats.greenZone, true)
         nbLeft--
-        if (nbLeft > 0) setTimeout(() => { this.greenZoneDamage(nbLeft) }, 200 / x2.speed)
+        if (nbLeft > 0) setTimeout(() => { this.greenZoneDamage(nbLeft) }, 100 / x2.speed)
     }
 }

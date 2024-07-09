@@ -73,6 +73,14 @@ const upgrades = [
         towerStats: function(){return towerStats.eventail},
         gameStats: function(){return gameStats.eventail},
         add: 1,
+        malus:{
+            adj: 'range',
+            add: -100,
+            func: function(){ towerStats.range += this.add },
+            upgrade: function(){ gameStats.range += this.add },
+            towerStats: function(){return towerStats.range},
+            gameStats: function(){return gameStats.range},
+        },
     },
     {
         name: "Double SHOT",

@@ -137,7 +137,7 @@ body {
             justify-content: center;
         }
 
-        div:nth-child(1) {
+        &>div:nth-child(1) {
             flex: 1;
             display: flex;
             align-items: center;
@@ -152,11 +152,12 @@ body {
 
             div {
                 position: relative;
-                width: 210px;
-                /* height: 18svw; */
+                width: 400px;
                 min-height: min-content;
-                min-width: min-content;
-                max-width: 11svw;
+                height: 200px;
+                width: fit-content;
+                min-width: 200px;
+                max-height: 300px;
                 border: solid gray 1px;
                 padding: 1svw;
                 display: flex;
@@ -172,24 +173,21 @@ body {
                     border-color: #53c721;
                     border-width: 2px;
                 }
-
                 &:hover {
                     background-color: rgba(211, 211, 211, 0.267);
                 }
-
                 .price {
                     align-self: center;
                     position: absolute;
                     bottom: 0px;
                 }
-
                 .desc {
                     font-style: italic;
                 }
             }
         }
 
-        div:nth-child(3) {
+        &>div:nth-child(3) {
             flex: 1;
 
             button {
@@ -203,6 +201,9 @@ body {
                 }
             }
         }
+    }
+    .malus{
+        color: rgb(163, 0, 0);
     }
 
     #helpDiv {

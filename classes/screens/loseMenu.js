@@ -27,12 +27,12 @@ export default class {
 
         this.pointsP = document.createElement('h2')
         this.pointsP.id = 'points'
-        this.setPoints()
+        this.setPoints(towerStats.lvl)
 
         this.head.append(this.title, this.pointsP)
     }
     buildBody() {
-        this.setPoints(towerStats.lvl)
+        // this.setPoints(100)
         this.body = document.createElement('div')
         this.body.id = 'body'
         this.div.appendChild(this.body)
@@ -58,9 +58,24 @@ export default class {
             desc.innerHTML = e.desc
             data.innerHTML = e.gameStats() + ' ' + e.adj + ' → ' + (e.gameStats() + e.add) + ' ' + e.adj
             price.innerHTML = e.price + ' points'
+
+            if(e.malus){
+                let malus = document.createElement('p')
+                div.append(malus)
+                malus.classList.add('malus')
+                malus.innerHTML =  e.malus.gameStats() + ' ' + e.malus.adj + ' → ' + (e.malus.gameStats() + e.malus.add) + ' ' + e.malus.adj
+            }
+
+
+
+
             div.onclick = () => {
                 if (this.points >= e.price) {
                     e.upgrade()
+                    if(e.malus){
+                        e.malus.upgrade()
+                        this.buildBody()
+                    }
                     this.setPoints(-e.price)
                     e.price = e.price * 4
                     price.innerHTML = e.price + ' points'

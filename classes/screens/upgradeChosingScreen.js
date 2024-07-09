@@ -27,8 +27,17 @@ class upgradeChosingScreen {
             dom.desc.innerHTML = up.desc
             dom.desc.classList.add('desc')
             dom.data.innerHTML = up.towerStats() + ' ' + up.adj + ' → ' + (up.towerStats() + up.add) + ' ' + up.adj
+            if (up.malus) {
+                let malus = document.createElement('p')
+                dom.div.append(malus)
+                malus.classList.add('malus')
+                malus.innerHTML = up.malus.gameStats() + ' ' + up.malus.adj + ' → ' + (up.malus.gameStats() + up.malus.add) + ' ' + up.malus.adj
+            }
+
+
             dom.div.onclick = () => {
                 up.func()
+                if (up.malus) { up.malus.func() }
                 towerStats.gameOn = true
                 this.div.remove()
                 this.displayed = false
