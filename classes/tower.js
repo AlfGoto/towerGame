@@ -43,8 +43,10 @@ export default class tower {
             }
         }
         towerStats.bullets = []
-        setTimeout(() => {
-            this.setTarget()
-        }, (2000 / towerStats.shootingSpeed) / x2.speed)
+        if(towerStats.shootingSpeed > 0){
+            setTimeout(() => {this.setTarget()}, (2000 / towerStats.shootingSpeed) / x2.speed)
+        }else{
+            setTimeout(() => {this.setTarget()}, (2000 / 0.1) / x2.speed)
+        }
     }
 }
