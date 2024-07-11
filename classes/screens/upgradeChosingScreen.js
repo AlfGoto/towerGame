@@ -34,7 +34,7 @@ class upgradeChosingScreen {
             dom.data.innerHTML = up.towerStats() + ' ' + up.adj + ' → ' + (up.towerStats() + up.add) + ' ' + up.adj
             dom.malus.classList.add('malus')
             if (up.malus) {
-                dom.malus.innerHTML = up.malus.gameStats() + ' ' + up.malus.adj + ' → ' + (up.malus.gameStats() + up.malus.add) + ' ' + up.malus.adj
+                dom.malus.innerHTML = up.malus.towerStats() + ' ' + up.malus.adj + ' → ' + (up.malus.towerStats() + up.malus.add) + ' ' + up.malus.adj
             }else{
                 dom.malus.innerHTML = ''
             }

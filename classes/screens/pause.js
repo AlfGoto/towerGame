@@ -33,7 +33,8 @@ class pauseClass {
         this.h1.innerHTML = 'Paused'
     }
     remove(){
-        this.div.remove()
+        // this.div.remove()
+        document.getElementById('pauseScreen').remove()
     }
 }
 export default new pauseClass()
