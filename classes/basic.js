@@ -1,6 +1,7 @@
 import { randomBetweenTwoInt, distanceToPlayer, angleToPlayer } from "./tools/utils.js"
 import towerStats from "./stats/towerStats.js"
 import x2 from "./options/x2.js"
+import foe from './three/foe.js'
 
 
 export default class basic {
@@ -13,7 +14,7 @@ export default class basic {
         this.shooter = obj.shooter || false
         this.size = obj.size || 25
         this.xp = obj.xp || Math.ceil(this.pv / 5)
-        this.class = obj.class || undefined
+        this.class = obj.class || 'basic'
 
         document.documentElement.style.setProperty('--' + this.constructor.name + 'Size', this.size + 'px');
         this.canBeGreenZoned = true
@@ -35,12 +36,15 @@ export default class basic {
         }
     }
     create(top, left) {
+        this.three = new foe(left, top, this.class, this.maxPv)
+
+
         this.top = top
         this.left = left
         this.div = document.createElement('div')
-        if (this.color) this.div.style.backgroundColor = this.color
+        // if (this.color) this.div.style.backgroundColor = this.color
         document.body.appendChild(this.div)
-        this.div.classList.add(this.class || this.constructor.name)
+        // this.div.classList.add(this.class || this.constructor.name)
         this.div.classList.add('ennemy')
         this.setPos()
 
@@ -79,24 +83,28 @@ export default class basic {
             setTimeout(() => { this.move() }, this.speed / x2.speed)
         } else {
             this.div.remove()
+            this.three.remove()
             towerStats.enemies.splice(towerStats.enemies.indexOf(this), 1)
             towerStats.dealDamage(Math.ceil(this.xp / 20))
             if (towerStats.closest == this) towerStats.closestDistance = 1500
         }
     }
     setPos() {
+        this.three.move(this.left, this.top)
         this.div.style.left = this.left + 'px'
         this.div.style.top = this.top + 'px'
-        this.div.innerHTML = this.pv
+        // this.div.innerHTML = this.pv
+        this.three.updateText(this.pv)
     }
     dealDamage(arg, greenzoned = false) {
         towerStats.closestDistance = 1500
-        this.div.classList.add('shake')
+        // this.div.classList.add('shake')
         this.pv = this.pv - arg
         this.setPos()
         if (this.pv < 1) {
             towerStats.enemies.splice(towerStats.enemies.indexOf(this), 1)
             this.div.remove()
+            this.three.remove()
             if (greenzoned) { towerStats.addXp(this.xp * towerStats.greenZoneXp) } else towerStats.addXp(this.xp)
         }
         setTimeout(() => { this.div.classList.remove('shake') }, 200)
@@ -105,6 +113,7 @@ export default class basic {
         this.pv = 0
         towerStats.enemies.splice(towerStats.enemies.indexOf(this), 1)
         this.div.remove()
+        this.three.remove()
         // towerStats.addXp(this.xp)
         towerStats.closestDistance = 1500
     }

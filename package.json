@@ -1,0 +1,14 @@
+{
+  "name": "towergame",
+  "version": "1.0.0",
+  "description": "A small tower game. The project here is to make it 3D",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "three": "^0.166.1"
+  }
+}

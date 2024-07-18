@@ -38,7 +38,7 @@ body {
     .ennemy {
         position: absolute;
         transform: matrix(1, 0, 0, 1, -50%, -50%);
-        background-color: rgb(255, 105, 105);
+        background-color: #ff6969;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -65,7 +65,7 @@ body {
         height: calc(1.6 * var(--basicSize));
     }
     .yellowboss{
-        background-color: rgb(255, 255, 18);
+        background-color: #ffff12;
         width: calc(1.7 * var(--basicSize));
         height: calc(1.7 * var(--basicSize));
     }
@@ -273,6 +273,11 @@ body {
 }
 
 
+canvas{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
 
 
 

@@ -8,7 +8,7 @@ import pause from './screens/pause.js'
 import help from './screens/helpText.js'
 
 export default class jeu {
-    constructor() {
+    constructor( ) {
         this.loseMenu = new loseMenu()
         this.Tower = new TowerBuilder()
         this.maxEnnemy = 100
@@ -17,8 +17,12 @@ export default class jeu {
         this.numberOfGamesDone = 0
         this.lastBossSpawnedTime = 1
 
+        // this.getScene = ()=>{return scene}
+        // console.log(scene)
+
         this.visibilityChange()
         this.startGame()
+
 
         setTimeout(() => { document.getElementById('helpDiv').remove() }, 5000)
     }
