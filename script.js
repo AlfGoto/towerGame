@@ -32,20 +32,21 @@ light.shadow.mapSize.height = 500;
 light.shadow.camera.near = 10;
 light.shadow.camera.far = 500; 
 
-const geometry = new THREE.BoxGeometry(100, 100, 100);
-const material = new THREE.MeshLambertMaterial({ color: 0x00ff00 });
-const cube = new THREE.Mesh(geometry, material);
+// const geometry = new THREE.BoxGeometry(100, 100, 100);
+// const material = new THREE.MeshLambertMaterial({ color: 0x00ff00 });
+// const cube = new THREE.Mesh(geometry, material);
 
-scene.add(cube);
+// scene.add(cube);
 
 // camera.position.z = 5;
 camera.position.y = 1000;
 camera.lookAt( 0, 0, 0 );
 
 export function animate() {
-    cube.rotation.x += 0.01;
-    cube.rotation.y += 0.01;
+    // cube.rotation.x += 0.01;
+    // cube.rotation.y += 0.01;
     renderer.render(scene, camera);
+    game.Tower.animate()
 }
 
 window.addEventListener('resize', onWindowResize, false);

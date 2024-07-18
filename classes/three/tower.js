@@ -2,14 +2,13 @@ import * as THREE from '/node_modules/three/build/three.module.js';
 import { scene } from "../../script.js";
 
 export default class threeOrb {
-    constructor(left, top, type, text = 10) {
-        this.radius = types[type].radius;
+    constructor(text = 10) {
 
         // Création de la sphère
-        this.geometry = new THREE.SphereGeometry(this.radius, 32, 32);
+        this.geometry = new THREE.SphereGeometry(100, 32, 32);
 
         // Matériau initial avec couleur
-        this.material = new THREE.MeshLambertMaterial({ color: types[type].color });
+        this.material = new THREE.MeshLambertMaterial({ color: 'wheat' });
 
         // Création d'un canvas pour dessiner le texte
         this.canvas = document.createElement('canvas');
@@ -28,43 +27,29 @@ export default class threeOrb {
         this.orb.receiveShadow = true;
         scene.add(this.orb);
 
-        // Positionnement de l'orb
-        this.move(left, top);
-    }
-
-    move(left, top) {
-        this.orb.position.x = (left - window.innerWidth / 2) * 2;
-        this.orb.position.z = (top - window.innerHeight / 2) * 2;
+        this.orb.position.x = 0;
+        this.orb.position.z = 0;
     }
 
     updateText(newText) {
         this.updateTextTexture(newText);
-        this.textTexture.needsUpdate = true; // Assurer la mise à jour de la texture
+        this.textTexture.needsUpdate = true; 
     }
 
     updateTextTexture(text) {
-        // Effacer le canvas
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-        // Dessiner le texte sur le canvas
         this.context.fillStyle = 'white';
         this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);
         this.context.fillStyle = 'black';
-        this.context.font = '48px Arial';
+        this.context.font = '45px Arial';
         this.context.textAlign = 'center';
         this.context.textBaseline = 'middle';
         this.context.fillText(text, this.canvas.width / 2, this.canvas.height / 2);
     }
-
-    remove() {
-        scene.remove(this.orb);
-        this.geometry.dispose();
-        this.material.dispose();
-        // Libérer la texture
-        if (this.textTexture) {
-            this.textTexture.dispose();
-            this.textTexture = null;
-        }
-        this.orb = null;
+    animate() {
+        // this.orb.rotation.y += 0.01;
+        this.orb.rotation.z += 0.01;
+        // this.orb.rotation.x += 0.01;
     }
 }

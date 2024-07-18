@@ -3,7 +3,6 @@ import towerStats from "./stats/towerStats.js"
 import x2 from "./options/x2.js"
 import foe from './three/foe.js'
 
-
 export default class basic {
     constructor(obj) {
         this.pv = obj.pv || 1

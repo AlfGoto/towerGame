@@ -2,12 +2,14 @@ import towerStats from './stats/towerStats.js'
 import { bullet } from './bullet.js'
 import { angleToTarget } from './tools/utils.js'
 import x2 from './options/x2.js'
+import threeOrb from "./three/tower.js"
 
 export default class tower {
     constructor() {
         this.div = document.createElement('div')
         document.body.appendChild(this.div)
         this.div.id = 'tower'
+        this.three = new threeOrb()
 
         this.hpP = document.createElement('p')
         this.hpP.id = 'hpP'
@@ -21,6 +23,7 @@ export default class tower {
 
         this.init()
     }
+    animate(){this.three.animate()}
     init() { this.setTarget() }
     setTarget() {
         if (towerStats.closest && towerStats.gameOn) {
